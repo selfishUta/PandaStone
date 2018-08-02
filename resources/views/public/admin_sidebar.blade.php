@@ -15,23 +15,18 @@
             <li><a href="charts.html">Charts <i class="st-chart"></i></a>
             </li>
             <li>
-                <a href="#"> Forms <i class="im-paragraph-justify"></i></a>
+                <a href="#"> 管理商品分类<i class="im-paragraph-justify"></i></a>
                 <ul class="nav sub">
-                    <li><a href="forms.html"><i class="ec-pencil2"></i> Form Stuff</a>
+                    <li><a href="list"><i class="ec-pencil2"></i>商品分类列表</a>
                     </li>
-                    <li><a href="form-validation.html"><i class="im-checkbox-checked"></i> Form Validation</a>
-                    </li>
-                    <li><a href="form-wizard.html"><i class="im-wand"></i> Form Wizard</a>
-                    </li>
-                    <li><a href="wysiwyg.html"><i class="fa-pencil"></i> WYSIWYG editor</a>
+                    <li><a href="admin/productCategory/add"><i class="im-checkbox-checked"></i>添加商品分类</a>
                     </li>
                 </ul>
             </li>
-            <li><a href="#"> Tables <i class="im-table2"></i></a>
+            <li>
+                <a href="#"> 库存分类管理 <i class="im-paragraph-justify"></i></a>
                 <ul class="nav sub">
-                    <li><a href="tables.html"><i class="en-arrow-right7"></i> Static tables</a>
-                    </li>
-                    <li><a href="data-tables.html"><i class="en-arrow-right7"></i> Data tables</a>
+                    <li><a href="{{url('admin/inventory_category/add')}}"><i class="ec-pencil2"></i>添加分类</a>
                     </li>
                 </ul>
             </li>

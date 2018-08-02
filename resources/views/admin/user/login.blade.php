@@ -3,7 +3,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>后台管理</title>
 <link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/login_style.css" />
-<link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/body.css"/> 
+<link rel="stylesheet" type="text/css" href="{{asset('admin')}}/css/body.css"/>
 </head>
 <body>
 <div class="container">
@@ -17,8 +17,8 @@
 				<input type="password" placeholder="密码" required="" name="password" id="password" />
 			</div>
 			 <div class="">
-				<span  class="help-block u-errormessage" id="js-server-helpinfo">{{session()->get('message') ?? ''}}&nbsp;</span>			
-			</div> 
+				<span  class="help-block u-errormessage" id="js-server-helpinfo">{{session()->get('message') ?? ''}}&nbsp;</span>
+			</div>
 			<div>
 				<input type="submit" style="margin-left:100px" value="登录" class="btn btn-primary" id="js-btn-login"/>
 				{{csrf_field()}}
@@ -39,11 +39,11 @@
 		}
 		function clearTimer(){
 			clearInterval(myVar);
-		}	
-		
+		}
+
 	</script>
 	 @endif
-		
+
 </div>
 </body>
 </html>
