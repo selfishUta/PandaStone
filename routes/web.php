@@ -49,10 +49,15 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
 	//=================================================================
 
+<<<<<<< HEAD
 	Route::get('inventory_category/add', 'Inventory_categoryController@add');
+=======
+    Route::get('inventory_category/add', 'Inventory_categoryController@add');
+>>>>>>> a265aa9130f65f5fe328e8c656ea0e06ee605e03
 
-	//=================================================================
+    //=================================================================
 
+<<<<<<< HEAD
 	// 后台管理商品模块--商品分类列表
 	Route::get("productCategory/list", "ProductCategoryController@list");
 	Route::get("productCategory/add", "ProductCategoryController@add");
@@ -61,6 +66,16 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
 	// 后台管理用户模块--普通用户分类列表
 	Route::get('user/index', "UserController@index");
+=======
+    // 后台管理商品模块--商品分类列表
+    Route::get("productCategory/list", "ProductCategoryController@list");
+
+    // 后台管理商品模块--商品分类添加展示页
+    Route::get("productCategory/add", "ProductCategoryController@add");
+
+    // 后天管理商品模块--添加商品分类
+    Route::post("productCategory/doAdd", "ProductCategoryController@doAdd");
+>>>>>>> a265aa9130f65f5fe328e8c656ea0e06ee605e03
 
 	// 后台管理用户模块--员工分类列表
 	Route::get('user/staff', "UserController@staff");
