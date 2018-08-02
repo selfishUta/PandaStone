@@ -38,6 +38,9 @@
         <link rel="apple-touch-icon-precomposed" href="{{asset('admin')}}/img/ico/apple-touch-icon-57-precomposed.png">
         <link rel="icon" href="{{asset('admin')}}/img/ico/favicon.ico" type="image/png">
         <!-- Windows8 touch icon ( http://www.buildmypinnedsite.com/ )-->
+        <style type="text/css">
+            @yield('css')
+        </style>
         <meta name="msapplication-TileColor" content="#3399cc" />
     </head>
     <body>

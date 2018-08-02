@@ -49,13 +49,17 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
     //=================================================================
 
-	Route::get('inventory_category/add','Inventory_categoryController@add');
+    Route::get('inventory_category/add', 'Inventory_categoryController@add');
 
-	//=================================================================
+    //=================================================================
 
     // 后台管理商品模块--商品分类列表
     Route::get("productCategory/list", "ProductCategoryController@list");
+
+    // 后台管理商品模块--商品分类添加展示页
     Route::get("productCategory/add", "ProductCategoryController@add");
 
+    // 后天管理商品模块--添加商品分类
+    Route::post("productCategory/doAdd", "ProductCategoryController@doAdd");
 
 });
