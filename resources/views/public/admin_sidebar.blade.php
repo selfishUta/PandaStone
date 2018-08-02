@@ -30,27 +30,11 @@
                     </li>
                 </ul>
             </li>
-            <li><a href="#"> UI Elements <i class="st-lab"></i></a>
+            <li><a href="#"> 用户分类管理 <i class="st-lab"></i></a>
                 <ul class="nav sub">
-                    <li><a href="notifications.html"><i class="fa-bell"></i> Notifications</a>
+                    <li><a href="{{url('admin/user/index')}}"><i class="fa-bell"></i> 普通用户分类列表 </a>
                     </li>
-                    <li><a href="panels.html"><i class="br-window"></i> Panels</a>
-                    </li>
-                    <li><a href="tiles.html"><i class="im-windows8"></i> Tiles</a>
-                    </li>
-                    <li><a href="elements.html"><i class="st-cube"></i> Elements</a>
-                    </li>
-                    <li><a href="icons.html"><i class="im-stack"></i> Icons</a>
-                    </li>
-                    <li><a href="buttons.html"><i class="im-play2"></i> Buttons</a>
-                    </li>
-                    <li><a href="calendar.html"><i class="im-calendar2"></i> Calendar</a>
-                    </li>
-                    <li><a href="grid.html"><i class="st-grid"></i> Grid</a>
-                    </li>
-                    <li><a href="typo.html"><i class="im-font"></i> Typography</a>
-                    </li>
-                    <li><a href="list.html"><i class="fa-list"></i> Lists</a>
+                    <li><a href="{{url('admin/user/staff')}}"><i class="br-window"></i> 员工成员列表 </a>
                     </li>
                 </ul>
             </li>
