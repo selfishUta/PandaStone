@@ -19,7 +19,7 @@
                 <ul class="nav sub">
                     <li><a href="list"><i class="ec-pencil2"></i>商品分类列表</a>
                     </li>
-                    <li><a href="admin/productCategory/add"><i class="im-checkbox-checked"></i>添加商品分类</a>
+                    <li><a href="add"><i class="im-checkbox-checked"></i>添加商品分类</a>
                     </li>
                 </ul>
             </li>
