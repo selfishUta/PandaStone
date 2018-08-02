@@ -1,40 +1,40 @@
 // make console.log safe to use
-window.console||(console={log:function(){}});
+window.console || (console = { log: function() {} });
 
 //Internet Explorer 10 in Windows 8 and Windows Phone 8 fix
 if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
-  var msViewportStyle = document.createElement('style')
-  msViewportStyle.appendChild(
-    document.createTextNode(
-      '@-ms-viewport{width:auto!important}'
+    var msViewportStyle = document.createElement('style')
+    msViewportStyle.appendChild(
+        document.createTextNode(
+            '@-ms-viewport{width:auto!important}'
+        )
     )
-  )
-  document.querySelector('head').appendChild(msViewportStyle)
+    document.querySelector('head').appendChild(msViewportStyle)
 }
 
 //Android stock browser
 var nua = navigator.userAgent
 var isAndroid = (nua.indexOf('Mozilla/5.0') > -1 && nua.indexOf('Android ') > -1 && nua.indexOf('AppleWebKit') > -1 && nua.indexOf('Chrome') === -1)
 if (isAndroid) {
-  $('select.form-control').removeClass('form-control').css('width', '100%')
+    $('select.form-control').removeClass('form-control').css('width', '100%')
 }
 
 //doc ready function
 $(document).ready(function() {
 
- 	//Disable certain links
-    $('a[href^=#]').click(function (e) {
+    //Disable certain links
+    $('a[href^=#]').click(function(e) {
         e.preventDefault()
     })
 
     //------------- Highlight code  -------------//
     hljs.initHighlightingOnLoad();
 
- 	//------------- Init our plugin -------------//
- 	$('body').sprFlat({
+    //------------- Init our plugin -------------//
+    $('body').sprFlat({
         //main color scheme for template
         //be sure to be same as colors on main.css or custom-variables.less
-        colors : {
+        colors: {
             white: '#fff',
             dark: '#79859b',
             red: '#f68484',
@@ -65,20 +65,20 @@ $(document).ready(function() {
             auto: true //auto populate breadcrumbs via js if is false you need to provide own markup see for example.
         },
         sidebar: {
-            fixed: true,//fixed sidebar
+            fixed: true, //fixed sidebar
             rememberToggle: true, //remember if sidebar is hided
             offCanvas: false //make sidebar offcanvas in tablet and small screens
         },
-        sideNav : {
+        sideNav: {
             hover: false, //shows subs on hover or click
-            showNotificationNumbers: 'onhover',//show how many elements menu have with notifcation style values - always, onhover, never
-            showArrows: true,//show arrow to indicate sub
+            showNotificationNumbers: 'onhover', //show how many elements menu have with notifcation style values - always, onhover, never
+            showArrows: true, //show arrow to indicate sub
             sideNavArrowIcon: 'en-arrow-down5', //arrow icon for navigation
-            showIndicator: false,//show indicator when hover links
+            showIndicator: false, //show indicator when hover links
             notificationColor: 'red', //green, red
-            subOpenSpeed: 300,//animation speed for open subs
-            subCloseSpeed: 400,//animation speed for close subs
-            animationEasing: 'linear',//animation easing
+            subOpenSpeed: 300, //animation speed for open subs
+            subCloseSpeed: 400, //animation speed for close subs
+            animationEasing: 'linear', //animation easing
             absoluteUrl: false, //put true if use absolute path links. example http://www.host.com/dashboard instead of /dashboard
             subDir: '' //if you put template in sub dir you need to fill here. example '/html'
         },
@@ -86,11 +86,11 @@ $(document).ready(function() {
             countNumbers: true //count numbers from 0 to specified value (required count plugin)
         },
         panels: {
-            refreshIcon: 'im-spinner6',//refresh icon for panels
-            toggleIcon: 'im-minus',//toggle icon for panels
-            collapseIcon: 'im-plus',//colapse icon for panels
+            refreshIcon: 'im-spinner6', //refresh icon for panels
+            toggleIcon: 'im-minus', //toggle icon for panels
+            collapseIcon: 'im-plus', //colapse icon for panels
             closeIcon: 'im-close', //close icon
-            showControlsOnHover: true,//Show controls only on hover.
+            showControlsOnHover: true, //Show controls only on hover.
             overlayRefreshIcon: 'im-spinner5', //loading icon in overlay
             rememberSortablePosition: true //remember position in localstorage
         },
@@ -109,7 +109,7 @@ $(document).ready(function() {
         backToTop: {
             active: true, //activate back to top
             scrolltime: 800, //scroll time speed
-            imgsrc: 'assets/img/backtop.png', //image 
+            imgsrc: 'admin/img/backtop.png', //image 
             width: 48, //width of image
             place: 'bottom-right', //position top-left, top-right, bottom-right, bottom-left
             fadein: 500, //fadein speed
@@ -120,27 +120,27 @@ $(document).ready(function() {
         },
         dropdownMenu: {
             animation: true, //animation effect for dropdown
-            openEffect: 'fadeInDown',//open effect for menu see http://daneden.github.io/animate.css/
+            openEffect: 'fadeInDown', //open effect for menu see http://daneden.github.io/animate.css/
         }
- 	});
+    });
 
     //get settings object
     var sprObject = $('body').data('sprFlat');
     var settings = sprObject.settings;
 
     //------------- Bootstrap tooltips -------------//
-    $("[data-toggle=tooltip]").tooltip ({container:'body'});
-    $(".tip").tooltip ({placement: 'top', container: 'body'});
-    $(".tipR").tooltip ({placement: 'right', container: 'body'});
-    $(".tipB").tooltip ({placement: 'bottom', container: 'body'});
-    $(".tipL").tooltip ({placement: 'left', container: 'body'});
+    $("[data-toggle=tooltip]").tooltip({ container: 'body' });
+    $(".tip").tooltip({ placement: 'top', container: 'body' });
+    $(".tipR").tooltip({ placement: 'right', container: 'body' });
+    $(".tipB").tooltip({ placement: 'bottom', container: 'body' });
+    $(".tipL").tooltip({ placement: 'left', container: 'body' });
     //------------- Bootstrap popovers -------------//
-    $("[data-toggle=popover]").popover ();
+    $("[data-toggle=popover]").popover();
 
     //------------- Qick post wysiwyg editor and tags -------------//
     tinymce.init({
         selector: ".wysiwyg",
-        menubar : false,
+        menubar: false,
         plugins: [
             "advlist autolink lists link image charmap print preview anchor",
             "searchreplace visualblocks code fullscreen",
@@ -148,6 +148,6 @@ $(document).ready(function() {
         ],
         toolbar: "bold italic strikethrough bullist numlist blockquote hr alignleft aligncenter alignright alignjustify link unlink code image media fullscreen"
     });
-    $('.tags1').tagsInput({width: 'auto'});
+    $('.tags1').tagsInput({ width: 'auto' });
 
 });
