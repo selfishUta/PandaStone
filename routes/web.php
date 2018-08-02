@@ -20,35 +20,37 @@ Route::get('captcha/show', 'CaptchaController@show');
 // 后台分组路由
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
-	// 后台登陆页面
-	Route::get('user/login', 'UserController@login');
+    // 后台登陆页面
+    Route::get('user/login', 'UserController@login');
 
-	// 后台登陆检查
-	Route::post('user/check', 'UserController@check');
+    // 后台登陆检查
+    Route::post('user/check', 'UserController@check');
 
-	// 后台退出操作
-	Route::get('user/logout', 'UserController@logout');
+    // 后台退出操作
+    Route::get('user/logout', 'UserController@logout');
 
-	// 后台首页
-	Route::get('/', 'AdminController@index');
+    // 后台首页
+    Route::get('/', 'AdminController@index');
 
-	// 后台用户列表
-	Route::get('user/list', 'UserController@list');
+    // 后台用户列表
+    Route::get('user/list', 'UserController@list');
 
-	// ajax后台展示用户添加页面
-	Route::get('user/add', 'UserController@add');
+    // ajax后台展示用户添加页面
+    Route::get('user/add', 'UserController@add');
 
-	// 后台用户根据id编辑
-	Route::get('user/edit/{id}', 'UserController@edit');
+    // 后台用户根据id编辑
+    Route::get('user/edit/{id}', 'UserController@edit');
 
-	// 后台用户根据id更新
-	Route::post('user/edit/{id}', 'UserController@edit');
+    // 后台用户根据id更新
+    Route::post('user/edit/{id}', 'UserController@edit');
 
-	// 后台用户根据id删除
-	Route::get('user/del/{id}', 'UserController@del');
+    // 后台用户根据id删除
+    Route::get('user/del/{id}', 'UserController@del');
 
-	//=================================================================
+    //=================================================================
 
+    // 后台管理商品模块--商品分类列表
+    Route::get("productCategory/list", "ProductCategoryController@list");
+    Route::get("productCategory/add", "ProductCategoryController@add");
 
 });
-
