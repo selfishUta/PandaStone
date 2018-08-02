@@ -15,9 +15,9 @@
             <li><a href="charts.html">Charts <i class="st-chart"></i></a>
             </li>
             <li>
-                <a href="#"> Forms <i class="im-paragraph-justify"></i></a>
+                <a href="#"> 库存分类管理 <i class="im-paragraph-justify"></i></a>
                 <ul class="nav sub">
-                    <li><a href="forms.html"><i class="ec-pencil2"></i> Form Stuff</a>
+                    <li><a href="{{url('admin/inventory_category/add')}}"><i class="ec-pencil2"></i>添加分类</a>
                     </li>
                     <li><a href="form-validation.html"><i class="im-checkbox-checked"></i> Form Validation</a>
                     </li>

@@ -49,6 +49,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 
 	//=================================================================
 
+	Route::get('inventory_category/add','Inventory_categoryController@add');
+
+	//=================================================================
+
 
 });
 
