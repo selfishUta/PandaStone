@@ -2282,7 +2282,7 @@ body {
     padding: 0;
     width: 20px;
     height: 20px;
-    background: url(../../assets/plugins/forms/icheck/flat/flat.png) no-repeat;
+    background: url(../../admin/plugins/forms/icheck/flat/flat.png) no-repeat;
     border: none;
     cursor: pointer;
 }
@@ -2332,7 +2332,7 @@ only screen and (-o-min-device-pixel-ratio: 3/2),
 only screen and (min-device-pixel-ratio: 1.5) {
     .icheckbox_flat,
     .iradio_flat {
-        background-image: url(../../assets/plugins/forms/icheck/flat/flat@2x.png);
+        background-image: url(../../admin/plugins/forms/icheck/flat/flat@2x.png);
         background-size: 176px 22px;
     }
 }
@@ -2351,7 +2351,7 @@ only screen and (min-device-pixel-ratio: 1.5) {
     padding: 0;
     width: 20px;
     height: 20px;
-    background: url(../../assets/plugins/forms/icheck/flat/red.png) no-repeat;
+    background: url(../../admin/plugins/forms/icheck/flat/red.png) no-repeat;
     border: none;
     cursor: pointer;
 }
@@ -2401,7 +2401,7 @@ only screen and (-o-min-device-pixel-ratio: 3/2),
 only screen and (min-device-pixel-ratio: 1.5) {
     .icheckbox_flat-red,
     .iradio_flat-red {
-        background-image: url(../../assets/plugins/forms/icheck/flat/red@2x.png);
+        background-image: url(../../admin/plugins/forms/icheck/flat/red@2x.png);
         background-size: 176px 22px;
     }
 }
@@ -2420,7 +2420,7 @@ only screen and (min-device-pixel-ratio: 1.5) {
     padding: 0;
     width: 20px;
     height: 20px;
-    background: url(../../assets/plugins/forms/icheck/flat/green.png) no-repeat;
+    background: url(../../admin/plugins/forms/icheck/flat/green.png) no-repeat;
     border: none;
     cursor: pointer;
 }
@@ -2470,7 +2470,7 @@ only screen and (-o-min-device-pixel-ratio: 3/2),
 only screen and (min-device-pixel-ratio: 1.5) {
     .icheckbox_flat-green,
     .iradio_flat-green {
-        background-image: url(../../assets/plugins/forms/icheck/flat/green@2x.png);
+        background-image: url(../../admin/plugins/forms/icheck/flat/green@2x.png);
         background-size: 176px 22px;
     }
 }
@@ -2539,7 +2539,7 @@ only screen and (-o-min-device-pixel-ratio: 3/2),
 only screen and (min-device-pixel-ratio: 1.5) {
     .icheckbox_flat-blue,
     .iradio_flat-blue {
-        background-image: url(../../assets/plugins/forms/icheck/flat/blue@2x.png);
+        background-image: url(../../admin/plugins/forms/icheck/flat/blue@2x.png);
         background-size: 176px 22px;
     }
 }
@@ -2558,7 +2558,7 @@ only screen and (min-device-pixel-ratio: 1.5) {
     padding: 0;
     width: 20px;
     height: 20px;
-    background: url(../../assets/plugins/forms/icheck/flat/aero.png) no-repeat;
+    background: url(../../admin/plugins/forms/icheck/flat/aero.png) no-repeat;
     border: none;
     cursor: pointer;
 }
@@ -2608,7 +2608,7 @@ only screen and (-o-min-device-pixel-ratio: 3/2),
 only screen and (min-device-pixel-ratio: 1.5) {
     .icheckbox_flat-aero,
     .iradio_flat-aero {
-        background-image: url(../../assets/plugins/forms/icheck/flat/aero@2x.png);
+        background-image: url(../../admin/plugins/forms/icheck/flat/aero@2x.png);
         background-size: 176px 22px;
     }
 }
@@ -2627,7 +2627,7 @@ only screen and (min-device-pixel-ratio: 1.5) {
     padding: 0;
     width: 20px;
     height: 20px;
-    background: url(../../assets/plugins/forms/icheck/flat/grey.png) no-repeat;
+    background: url(../../admin/plugins/forms/icheck/flat/grey.png) no-repeat;
     border: none;
     cursor: pointer;
 }
@@ -2677,7 +2677,7 @@ only screen and (-o-min-device-pixel-ratio: 3/2),
 only screen and (min-device-pixel-ratio: 1.5) {
     .icheckbox_flat-grey,
     .iradio_flat-grey {
-        background-image: url(../../assets/plugins/forms/icheck/flat/grey@2x.png);
+        background-image: url(../../admin/plugins/forms/icheck/flat/grey@2x.png);
         background-size: 176px 22px;
     }
 }
@@ -2696,7 +2696,7 @@ only screen and (min-device-pixel-ratio: 1.5) {
     padding: 0;
     width: 20px;
     height: 20px;
-    background: url(../../assets/plugins/forms/icheck/flat/orange.png) no-repeat;
+    background: url(../../admin/plugins/forms/icheck/flat/orange.png) no-repeat;
     border: none;
     cursor: pointer;
 }
@@ -2746,7 +2746,7 @@ only screen and (-o-min-device-pixel-ratio: 3/2),
 only screen and (min-device-pixel-ratio: 1.5) {
     .icheckbox_flat-orange,
     .iradio_flat-orange {
-        background-image: url(../../assets/plugins/forms/icheck/flat/orange@2x.png);
+        background-image: url(../../admin/plugins/forms/icheck/flat/orange@2x.png);
         background-size: 176px 22px;
     }
 }
@@ -2765,7 +2765,7 @@ only screen and (min-device-pixel-ratio: 1.5) {
     padding: 0;
     width: 20px;
     height: 20px;
-    background: url(assets/plugins/forms/icheck/flat/yellow.png) no-repeat;
+    background: url(admin/plugins/forms/icheck/flat/yellow.png) no-repeat;
     border: none;
     cursor: pointer;
 }
@@ -2815,7 +2815,7 @@ only screen and (-o-min-device-pixel-ratio: 3/2),
 only screen and (min-device-pixel-ratio: 1.5) {
     .icheckbox_flat-yellow,
     .iradio_flat-yellow {
-        background-image: url(assets/plugins/forms/icheck/flat/yellow@2x.png);
+        background-image: url(admin/plugins/forms/icheck/flat/yellow@2x.png);
         background-size: 176px 22px;
     }
 }
@@ -2834,7 +2834,7 @@ only screen and (min-device-pixel-ratio: 1.5) {
     padding: 0;
     width: 20px;
     height: 20px;
-    background: url(assets/plugins/forms/icheck/flat/pink.png) no-repeat;
+    background: url(admin/plugins/forms/icheck/flat/pink.png) no-repeat;
     border: none;
     cursor: pointer;
 }
@@ -2884,7 +2884,7 @@ only screen and (-o-min-device-pixel-ratio: 3/2),
 only screen and (min-device-pixel-ratio: 1.5) {
     .icheckbox_flat-pink,
     .iradio_flat-pink {
-        background-image: url(assets/plugins/forms/icheck/flat/pink@2x.png);
+        background-image: url(admin/plugins/forms/icheck/flat/pink@2x.png);
         background-size: 176px 22px;
     }
 }
@@ -2903,7 +2903,7 @@ only screen and (min-device-pixel-ratio: 1.5) {
     padding: 0;
     width: 20px;
     height: 20px;
-    background: url(assets/plugins/forms/icheck/flat/purple.png) no-repeat;
+    background: url(admin/plugins/forms/icheck/flat/purple.png) no-repeat;
     border: none;
     cursor: pointer;
 }
@@ -2953,7 +2953,7 @@ only screen and (-o-min-device-pixel-ratio: 3/2),
 only screen and (min-device-pixel-ratio: 1.5) {
     .icheckbox_flat-purple,
     .iradio_flat-purple {
-        background-image: url(assets/plugins/forms/icheck/flat/purple@2x.png);
+        background-image: url(admin/plugins/forms/icheck/flat/purple@2x.png);
         background-size: 176px 22px;
     }
 }
@@ -4500,7 +4500,7 @@ div.tagsinput div {
     font-size: 1px;
     text-decoration: none;
     border: 0;
-    background: url('../../assets/plugins/forms/select2/select2.png') right top no-repeat;
+    background: url('../../admin/plugins/forms/select2/select2.png') right top no-repeat;
     cursor: pointer;
     outline: 0;
 }
@@ -4587,7 +4587,7 @@ div.tagsinput div {
     display: block;
     width: 100%;
     height: 100%;
-    background: url('../../assets/plugins/forms/select2/select2.png') no-repeat 0 2px;
+    background: url('../../admin/plugins/forms/select2/select2.png') no-repeat 0 2px;
 }
 
 .select2-search {
@@ -4614,11 +4614,11 @@ div.tagsinput div {
     border: 1px solid #e7e7e2;
     border-radius: 0;
     box-shadow: none;
-    background: #ffffff url('../../assets/plugins/forms/select2/select2.png') no-repeat 100% -22px;
-    background: url('../../assets/plugins/forms/select2/select2.png') no-repeat 100% -22px, -webkit-gradient(linear, left bottom, left top, color-stop(0.85, #ffffff), color-stop(0.99, #eeeeee));
-    background: url('../../assets/plugins/forms/select2/select2.png') no-repeat 100% -22px, -webkit-linear-gradient(center bottom, #ffffff 85%, #eeeeee 99%);
-    background: url('../../assets/plugins/forms/select2/select2.png') no-repeat 100% -22px, -webkit-linear-gradient(top, #ffffff 85%, #eeeeee 99%);
-    background: url('../../assets/plugins/forms/select2/select2.png') no-repeat 100% -22px, linear-gradient(top, #ffffff 85%, #eeeeee 99%);
+    background: #ffffff url('../../admin/plugins/forms/select2/select2.png') no-repeat 100% -22px;
+    background: url('../../admin/plugins/forms/select2/select2.png') no-repeat 100% -22px, -webkit-gradient(linear, left bottom, left top, color-stop(0.85, #ffffff), color-stop(0.99, #eeeeee));
+    background: url('../../admin/plugins/forms/select2/select2.png') no-repeat 100% -22px, -webkit-linear-gradient(center bottom, #ffffff 85%, #eeeeee 99%);
+    background: url('../../admin/plugins/forms/select2/select2.png') no-repeat 100% -22px, -webkit-linear-gradient(top, #ffffff 85%, #eeeeee 99%);
+    background: url('../../admin/plugins/forms/select2/select2.png') no-repeat 100% -22px, linear-gradient(top, #ffffff 85%, #eeeeee 99%);
 }
 
 .select2-drop.select2-drop-above .select2-search input {
@@ -4626,11 +4626,11 @@ div.tagsinput div {
 }
 
 .select2-search input.select2-active {
-    background: #ffffff url('../../assets/plugins/forms/select2/spinner.gif') no-repeat 100%;
-    background: url('../../assets/plugins/forms/select2/spinner.gif') no-repeat 100%, -webkit-gradient(linear, left bottom, left top, color-stop(0.85, #ffffff), color-stop(0.99, #eeeeee));
-    background: url('../../assets/plugins/forms/select2/spinner.gif') no-repeat 100%, -webkit-linear-gradient(center bottom, #ffffff 85%, #eeeeee 99%);
-    background: url('../../assets/plugins/forms/select2/spinner.gif') no-repeat 100%, -webkit-linear-gradient(top, #ffffff 85%, #eeeeee 99%);
-    background: url('../../assets/plugins/forms/select2/spinner.gif') no-repeat 100%, linear-gradient(top, #ffffff 85%, #eeeeee 99%);
+    background: #ffffff url('../../admin/plugins/forms/select2/spinner.gif') no-repeat 100%;
+    background: url('../../admin/plugins/forms/select2/spinner.gif') no-repeat 100%, -webkit-gradient(linear, left bottom, left top, color-stop(0.85, #ffffff), color-stop(0.99, #eeeeee));
+    background: url('../../admin/plugins/forms/select2/spinner.gif') no-repeat 100%, -webkit-linear-gradient(center bottom, #ffffff 85%, #eeeeee 99%);
+    background: url('../../admin/plugins/forms/select2/spinner.gif') no-repeat 100%, -webkit-linear-gradient(top, #ffffff 85%, #eeeeee 99%);
+    background: url('../../admin/plugins/forms/select2/spinner.gif') no-repeat 100%, linear-gradient(top, #ffffff 85%, #eeeeee 99%);
 }
 
 .select2-container-active .select2-choice,
@@ -4787,7 +4787,7 @@ disabled look for disabled choices in the results dropdown
 }
 
 .select2-more-results.select2-active {
-    background: #eeeeee url('../../assets/plugins/forms/select2/spinner.gif') no-repeat 100%;
+    background: #eeeeee url('../../admin/plugins/forms/select2/spinner.gif') no-repeat 100%;
 }
 
 .select2-more-results {
@@ -4874,7 +4874,7 @@ disabled look for disabled choices in the results dropdown
 }
 
 .select2-container-multi .select2-choices .select2-search-field input.select2-active {
-    background: #ffffff url('../../assets/plugins/forms/select2/spinner.gif') no-repeat 100% !important;
+    background: #ffffff url('../../admin/plugins/forms/select2/spinner.gif') no-repeat 100% !important;
 }
 
 .select2-default {
@@ -4917,7 +4917,7 @@ disabled look for disabled choices in the results dropdown
     top: 6px;
     font-size: 1px;
     outline: none;
-    background: url('../../assets/plugins/forms/select2/select2.png') right top no-repeat;
+    background: url('../../admin/plugins/forms/select2/select2.png') right top no-repeat;
 }
 
 .select2-container-multi .select2-search-choice-close {
@@ -5005,7 +5005,7 @@ only screen and (min-resolution: 144dpi) {
     .select2-search-choice-close,
     .select2-container .select2-choice abbr,
     .select2-container .select2-choice .select2-arrow b {
-        background-image: url('../../assets/plugins/forms/select2/select2x2.png') !important;
+        background-image: url('../../admin/plugins/forms/select2/select2x2.png') !important;
         background-repeat: no-repeat !important;
         background-size: 60px 40px !important;
     }

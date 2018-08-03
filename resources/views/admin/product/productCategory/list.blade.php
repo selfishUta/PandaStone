@@ -125,4 +125,29 @@
 </div>
 @endsection
 @section("js")
+<script src="{{asset('admin')}}/plugins/core/moment/moment.min.js"></script>
+<script src="{{asset('admin')}}/plugins/charts/sparklines/jquery.sparkline.js"></script>
+<script src="{{asset('admin')}}/plugins/charts/pie-chart/jquery.easy-pie-chart.js"></script>
+<script src="{{asset('admin')}}/plugins/forms/icheck/jquery.icheck.js"></script>
+<script src="{{asset('admin')}}/plugins/forms/tags/jquery.tagsinput.min.js"></script>
+<script src="{{asset('admin')}}/plugins/forms/tinymce/tinymce.min.js"></script>
+<script src="{{asset('admin')}}/plugins/forms/switch/jquery.onoff.min.js"></script>
+<script src="{{asset('admin')}}/plugins/forms/maxlength/bootstrap-maxlength.js"></script>
+<script src="{{asset('admin')}}/plugins/forms/bootstrap-filestyle/bootstrap-filestyle.js"></script>
+<script src="{{asset('admin')}}/plugins/forms/color-picker/spectrum.js"></script>
+<script src="{{asset('admin')}}/plugins/forms/daterangepicker/daterangepicker.js"></script>
+<script src="{{asset('admin')}}/plugins/forms/datetimepicker/bootstrap-datetimepicker.min.js"></script>
+<script src="{{asset('admin')}}/plugins/forms/globalize/globalize.js"></script>
+<script src="{{asset('admin')}}/plugins/forms/maskedinput/jquery.maskedinput.js"></script>
+<script src="{{asset('admin')}}/plugins/forms/select2/select2.js"></script>
+<script src="{{asset('admin')}}/plugins/forms/dual-list-box/jquery.bootstrap-duallistbox.js"></script>
+<script src="{{asset('admin')}}/plugins/forms/password/jquery-passy.js"></script>
+<script src="{{asset('admin')}}/plugins/forms/checkall/jquery.checkAll.js"></script>
+<script src="{{asset('admin')}}/plugins/forms/validation/jquery.validate.js"></script>
+<script src="{{asset('admin')}}/plugins/forms/validation/additional-methods.min.js"></script>
+<script src="{{asset('admin')}}/plugins/misc/highlight/highlight.pack.js"></script>
+<script src="{{asset('admin')}}/plugins/misc/countTo/jquery.countTo.js"></script>
+<script src="{{asset('admin')}}/js/jquery.sprFlat.js"></script>
+<script src="{{asset('admin')}}/js/app.js"></script>
+<script src="{{asset('admin')}}/js/pages/form-validation.js"></script>
 @endsection
