@@ -15,17 +15,19 @@ class ProductCategory extends Model
      * @param  array  $cont  存放容器
      * @return array $cont 递归获取到的分类信息在存放容器中
      */
-    public static function getAllCatesByid($id = 0, $count = "", $cont = [])
+    public static function getAllCatesByid($pid = 0, $count = "", $cont = [])
     {
-        $arr = self::select('id', 'name')->where('id', $id)->get();
-        $count += "++";
+        $arr = self::select('id', 'name')->where('pid', $pid)->get();
+        if ($pid !== 0) {
+            $count .= "++";
+        }
         foreach ($arr as $fcate) {
-            $count[] = ['id' => $fcate->id, 'name' => $count . $fcate->name];
-            $arr     = self::getAllCatesByid($fcate->id, $count, $cont);
+            $cont[] = ['id' => $fcate->id, 'name' => $count . $fcate->name];
+            $cont   = self::getAllCatesByid($fcate->id, $count, $cont);
         }
         return $cont;
     }
-    //id
+//id
     //name
     //intro
     //pid

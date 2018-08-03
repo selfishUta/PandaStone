@@ -138,9 +138,6 @@
         </ul>
     </div>
     @endif
-    @if(isset($message))
-    <span><font color="red">$message</font></span>
-    @endif
     <form action="doAdd" method="post" enctype="multipart/form-data" class="form-horizontal">
         {{csrf_field()}}
     <!-- start 名称 -->

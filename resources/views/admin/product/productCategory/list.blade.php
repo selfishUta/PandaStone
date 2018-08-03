@@ -122,6 +122,36 @@
     </div>
     <!-- End .content-wrapper -->
     <div class="clearfix"></div>
+    <!-- start 商品分类列表 -->
+  <table class="table table-bordered table-responsive table-hover table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>分类名称</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+        @foreach($allProdCates as $prodCate)
+            <tr>
+                <td>{{$prodCate['id']}}</td>
+                <td>{{$prodCate['name']}}</td>
+                <td>
+                    <button type="button" class="btn btn-xs btn-success">
+                        <a href="{{url('admin/productCategory/detail')}}">查看</a>
+                    </button>
+                    <button type="button" class="btn btn-xs btn-primary">
+                        <a href="{{url('admin/productCategory/edit')}}">编辑</a>
+                    </button>
+                    <button type="button" class="btn btn-xs btn-danger">
+                        <a href="{{url('admin/productCategory/delete')}}">删除</a>
+                    </button>
+                </td>
+            </tr>
+        @endforeach
+    </tbody>
+  </table>
+    <!-- end 商品分类列表 -->
 </div>
 @endsection
 @section("js")
