@@ -28,6 +28,8 @@
                 <ul class="nav sub">
                     <li><a href="{{url('admin/inventory_category/add')}}"><i class="ec-pencil2"></i>添加分类</a>
                     </li>
+                    <li><a href="{{url('admin/inventory_category/list')}}"><i class="ec-pencil2"></i>分类列表</a>
+                    </li>
                 </ul>
             </li>
             <li><a href="#"> 用户分类管理 <i class="st-lab"></i></a>

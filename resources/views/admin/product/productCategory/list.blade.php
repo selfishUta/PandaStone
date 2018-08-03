@@ -158,7 +158,7 @@
 <script type="text/javascript">
     $(document).ready(function(){
         $("#mydelete").click(function(){
-            var targetid = this.parentNode;
+            var targetid = this;
             console.log('你好');
             console.log(targetid);
             // $.ajax({
