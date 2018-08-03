@@ -8,7 +8,7 @@
 	        <!-- Start .row -->
 	        <!-- Start .page-header -->
 	        <div class="col-lg-12 heading">
-	            <h1 class="page-header"><i class="im-paragraph-justify"></i> Forms</h1>
+	            <h1 class="page-header"><i class="im-paragraph-justify"></i>库存管理</h1>
 	            <!-- Start .bredcrumb -->
 	            <ul id="crumb" class="breadcrumb">
 	            </ul>
@@ -155,12 +155,9 @@
 	                                        <div class="col-lg-6 col-md-6">
 	                                            <select class="form-control" name="pid">
 	                                                <option value="0">顶级分类</option>
-	                                                <optgroup label="Pacific Time Zone">
-	                                                    <option value="CA">California</option>
-	                                                    <option value="NV">Nevada</option>
-	                                                    <option value="OR">Oregon</option>
-	                                                    <option value="WA">Washington</option>
-	                                                </optgroup>
+	                                                @foreach($listArr as $v)
+	                                                <option value="{{$v['id']}}">{{$v['name']}}</option>
+	                                                @endforeach
 	                                            </select>
 	                                            <span class="help-block"></span>
 	                                        </div>
@@ -177,9 +174,9 @@
 	                                                <optgroup label="模拟实验">
 	                                                    <option value="0">模拟店铺</option>
 	                                                </optgroup>
-	                                                <optgroup label="Mountain Time Zone">
-	                                                    <option value="AZ">Arizona</option>
-	                                                    <option value="CO">Colorado</option>
+	                                                <optgroup label="模拟不要选">
+	                                                    <option value="AZ">1</option>
+	                                                    <option value="CO">2</option>
 	                                                </optgroup>
 	                                            </select>
 	                                            <span class="help-block"></span>

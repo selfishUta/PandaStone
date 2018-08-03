@@ -29,6 +29,11 @@ class Inventory_category extends Model {
 				'name' => $str . $v->name,
 				'pid' => $v->pid,
 				'pname' => $v->pname ?? '顶级分类',
+				'intro' => $v->intro ?? '',
+				'status' => $v->status,
+				'shop_id' => $v->shop_id,
+				'created_at' => $v->created_at,
+				'updated_at' => $v->updated_at,
 				'categorystr' => $p . '>',
 			];
 			// 获取子分类

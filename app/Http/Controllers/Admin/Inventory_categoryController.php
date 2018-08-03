@@ -10,15 +10,18 @@ class Inventory_categoryController extends Controller {
 	 * 功能: 展示库存分类主页
 	 */
 	public function add(Request $request) {
+		$invObj = new Inventory_category;
 		if ($request->isMethod('get')) {
-			return view('admin/Inventory_category/add');
+			// 分类树
+			$listArr = $invObj->getInventoryCategoryTree();
+			return view('admin/Inventory_category/add',['listArr'=>$listArr]);
 		}elseif($request->isMethod('post')) {
 			// 接收数据
 			$arr = $request->all();
 
 			// TODO ============验证数据
 			// $this->validateSelf($request);
-			$invObj = new Inventory_category;
+
 			// 可添加字段
 			$fieldArr = ['name','intro','shop_id','pid'];
 			foreach($arr as $k=>$v) {
@@ -43,8 +46,8 @@ class Inventory_categoryController extends Controller {
 	 */
 	public function list() {
 		$invObj = new Inventory_category;
-		$listCols = $invObj->getInventoryCategoryTree();
-		return view('admin/Inventory_category/list',['listCols'=>$listCols]);
+		$listArr = $invObj->getInventoryCategoryTree();
+		return view('admin/Inventory_category/list',['listArr'=>$listArr]);
 	}
 
 
