@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\ProductCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ProductCategoryController extends Controller
 {
@@ -13,8 +14,8 @@ class ProductCategoryController extends Controller
      * @return 显示商品列表页
      */
     function list() {
-        // dd('lala');
-        return view("admin.product.productCategory.list");
+        $allProdCates = ProductCategory::getAllCatesByid();
+        return view("admin.product.productCategory.list", ['allProdCates' => $allProdCates]);
     }
     /**
      * 展示添加商品分类
@@ -23,8 +24,7 @@ class ProductCategoryController extends Controller
     {
         //查询到所有的分类并将分类显示出来
         $allProdCate = ProductCategory::getAllCatesByid();
-        dd($allProdCate);
-        return view("admin.product.ProductCategory.add");
+        return view("admin.product.ProductCategory.add", ['prodCates' => $allProdCate]);
     }
 
     /**
@@ -34,11 +34,75 @@ class ProductCategoryController extends Controller
      */
     public function doAdd(Request $request)
     {
-        dd($request->all());
+        $data = $request->all();
+        unset($data['_token']);
+        //店铺id
+        $data['shop_id'] = 1;
+        //表单验证
+        //----------------------------------------------------
+        $rules = [
+            'name'  => 'required|unique:product_category|max:255',
+            'intro' => 'required',
+        ];
+        $messages = [
+            'required'    => '不能为空',
+            'name.unique' => '名称已存在',
+            'name.max'    => '字数不能超过5个',
+        ];
+        $validator = Validator::make($request->all(), $rules, $messages);
+        if ($validator->fails()) {
+            return redirect('post/create')
+                ->withErrors($validator)
+                ->withInput();
+        }
+        //----------------------------------------------------
+        $prodCate = new ProductCategory();
+        foreach ($data as $k => $v) {
+            $prodCate->$k = $v;
+        }
+        $re = $prodCate->save();
+        if ($re) {
+            $message = "添加成功";
+        } else {
+            $message = "添加失败";
+        }
+        return redirect()->back()->with('message', $message);
     }
-    /**
-     * 查看商品分类下的所有商品
-     */
+
+    public function edit($id)
+    {
+        $theProdCate = ProductCategory::where('id', $id)->first();
+        $allProdCate = ProductCategory::getAllCatesByid();
+        return view("admin.product.ProductCategory.add", ['theProdCate' => $theProdCate, 'prodCates' => $allProdCate]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $data = $request->all();
+        unset($data['_token']);
+        $rules = [
+            'name'  => 'required|unique|max:255',
+            'intro' => 'required',
+            'pid'   => '',
+        ];
+        $data['id'] = $id;
+        $messages   = [
+            'required' => 'The :attribute field is required.',
+        ];
+        $validator = Validator::make($data, $rules, $messages);
+        //----------------------------------------------------
+        $productCategory = new ProductCategory();
+        $re              = $productCategory->update($data);
+        if ($re) {
+            $message = "修改成功";
+        } else {
+            $message = "修改失败";
+        }
+        return redirect()->back()->with('message', $message);
+    }
+/**
+ * 查看商品分类下的所有商品
+ */
     public function showProdList($catId)
     {
 

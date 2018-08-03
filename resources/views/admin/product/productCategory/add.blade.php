@@ -129,6 +129,18 @@
     </div>
     <!-- End .content-wrapper -->
     <div class="clearfix"></div>
+    @if (count($errors) > 0)
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+    @if(isset($message))
+    <span><font color="red">$message</font></span>
+    @endif
     <form action="doAdd" method="post" enctype="multipart/form-data" class="form-horizontal">
         {{csrf_field()}}
     <!-- start 名称 -->
@@ -165,6 +177,9 @@
       <div class="col-md-5">
         <select name="pid" class="form-control">
             <option value="0">顶级分类</option>
+            @foreach($prodCates as $cate)
+            <option value="{{$cate['id']}}">{{$cate['name']}}</option>
+            @endforeach
         </select>
       </div>
       <div class="col-md-5">

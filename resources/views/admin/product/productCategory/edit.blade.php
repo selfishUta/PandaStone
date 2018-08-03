@@ -1,4 +1,11 @@
 @extends("layouts/admin")
+@section("css")
+.mytextarea {
+    width: 316px;
+    height: 457px;
+    resize: none;
+}
+@endsection
 @section("content")
 <div id="content">
     <!-- Start .content-wrapper -->
@@ -7,7 +14,7 @@
             <!-- Start .row -->
             <!-- Start .page-header -->
             <div class="col-lg-12 heading">
-                <h1 class="page-header"><i class="im-table2"></i>商品分类列表</h1>
+                <h1 class="page-header"><i class="im-table2"></i>添加商品分类</h1>
                 <!-- Start .bredcrumb -->
                 <ul id="crumb" class="breadcrumb">
                 </ul>
@@ -122,62 +129,69 @@
     </div>
     <!-- End .content-wrapper -->
     <div class="clearfix"></div>
-    <!-- start 商品分类列表 -->
-  <table class="table table-bordered table-responsive table-hover table-striped">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>分类名称</th>
-        <th>操作</th>
-      </tr>
-    </thead>
-    <tbody>
-        @foreach($allProdCates as $prodCate)
-            <tr>
-                <td>{{$prodCate['id']}}</td>
-                <td>{{$prodCate['name']}}</td>
-                <td>
-                    <button type="button" class="btn btn-xs btn-success">
-                        <a href="{{url('admin/productCategory/detail')}}">查看</a>
-                    </button>
-                    <button type="button" class="btn btn-xs btn-primary">
-                        <a href="{{url('admin/productCategory/edit')}}">编辑</a>
-                    </button>
-                    <button type="button" class="btn btn-xs btn-danger">
-                        <a href="{{url('admin/productCategory/delete')}}">删除</a>
-                    </button>
-                </td>
-            </tr>
-        @endforeach
-    </tbody>
-  </table>
-    <!-- end 商品分类列表 -->
+    @if (count($errors) > 0)
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+    <form action="doAdd" method="post" enctype="multipart/form-data" class="form-horizontal">
+        {{csrf_field()}}
+    <!-- start 名称 -->
+    <div class="form-group">
+      <div class="col-md-2">
+        <label class="control-label">产品分类名称:</label>
+      </div>
+      <div class="col-md-5">
+        <input class="form-control" type="text" name="name">
+      </div>
+      <div class="col-md-5">
+        <span class="help-block">请填写分类名称</span>
+      </div>
+    </div>
+    <!-- end 名称 -->
+    <!-- start 简介 -->
+    <div class="form-group">
+      <div class="col-md-2">
+        <label class="control-label">分类简介:</label>
+      </div>
+      <div class="col-md-5">
+        <textarea class="form-control"name="intro"></textarea>
+      </div>
+      <div class="col-md-5">
+        <span class="help-block">请填写分类简介</span>
+      </div>
+    </div>
+    <!-- end 简介 -->
+    <!-- start 父级分类 -->
+    <div class="form-group">
+      <div class="col-md-2">
+        <label class="control-label">父类:</label>
+      </div>
+      <div class="col-md-5">
+        <select name="pid" class="form-control">
+            <option value="0">顶级分类</option>
+            @foreach($prodCates as $cate)
+            <option value="{{$cate['id']}}">{{$cate['name']}}</option>
+            @endforeach
+        </select>
+      </div>
+      <div class="col-md-5">
+        <span class="help-block">请选择父类</span>
+      </div>
+    </div>
+    <!-- end 父级分类 -->
+    <div class="form-group">
+      <div class="col-md-10 col-md-offset-2">
+        <input type="submit" value="添加" class="btn btn-primary">
+        <input type="reset" value="取消" class="btn btn-default">
+      </div>
+    </div>
+</form>
 </div>
 @endsection
 @section("js")
-<script src="{{asset('admin')}}/plugins/core/moment/moment.min.js"></script>
-<script src="{{asset('admin')}}/plugins/charts/sparklines/jquery.sparkline.js"></script>
-<script src="{{asset('admin')}}/plugins/charts/pie-chart/jquery.easy-pie-chart.js"></script>
-<script src="{{asset('admin')}}/plugins/forms/icheck/jquery.icheck.js"></script>
-<script src="{{asset('admin')}}/plugins/forms/tags/jquery.tagsinput.min.js"></script>
-<script src="{{asset('admin')}}/plugins/forms/tinymce/tinymce.min.js"></script>
-<script src="{{asset('admin')}}/plugins/forms/switch/jquery.onoff.min.js"></script>
-<script src="{{asset('admin')}}/plugins/forms/maxlength/bootstrap-maxlength.js"></script>
-<script src="{{asset('admin')}}/plugins/forms/bootstrap-filestyle/bootstrap-filestyle.js"></script>
-<script src="{{asset('admin')}}/plugins/forms/color-picker/spectrum.js"></script>
-<script src="{{asset('admin')}}/plugins/forms/daterangepicker/daterangepicker.js"></script>
-<script src="{{asset('admin')}}/plugins/forms/datetimepicker/bootstrap-datetimepicker.min.js"></script>
-<script src="{{asset('admin')}}/plugins/forms/globalize/globalize.js"></script>
-<script src="{{asset('admin')}}/plugins/forms/maskedinput/jquery.maskedinput.js"></script>
-<script src="{{asset('admin')}}/plugins/forms/select2/select2.js"></script>
-<script src="{{asset('admin')}}/plugins/forms/dual-list-box/jquery.bootstrap-duallistbox.js"></script>
-<script src="{{asset('admin')}}/plugins/forms/password/jquery-passy.js"></script>
-<script src="{{asset('admin')}}/plugins/forms/checkall/jquery.checkAll.js"></script>
-<script src="{{asset('admin')}}/plugins/forms/validation/jquery.validate.js"></script>
-<script src="{{asset('admin')}}/plugins/forms/validation/additional-methods.min.js"></script>
-<script src="{{asset('admin')}}/plugins/misc/highlight/highlight.pack.js"></script>
-<script src="{{asset('admin')}}/plugins/misc/countTo/jquery.countTo.js"></script>
-<script src="{{asset('admin')}}/js/jquery.sprFlat.js"></script>
-<script src="{{asset('admin')}}/js/app.js"></script>
-<script src="{{asset('admin')}}/js/pages/form-validation.js"></script>
 @endsection
