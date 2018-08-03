@@ -10,23 +10,33 @@ class Inventory_categoryController extends Controller {
 	 * 功能: 展示库存分类主页
 	 */
 	public function add(Request $request) {
+		$invObj = new Inventory_category;
 		if ($request->isMethod('get')) {
-			return view('admin/Inventory_category/add');
+			// 分类树
+			$listArr = $invObj->getInventoryCategoryTree();
+			return view('admin/Inventory_category/add',['listArr'=>$listArr]);
 		}elseif($request->isMethod('post')) {
 			// 接收数据
-			$title = $request->get('title');
-			// 验证数据
-			$this->validateSelf($request);
-			// 可添加字段
-			$id = Type::insertGetId(['title'=>$title]);
-			if($id !== false) {
-				$arr['data'] = ['title'=>$title,'id'=>$id,'url'=>url('admin/type')];
+			$arr = $request->all();
 
-				$arr['status'] = 'success';
+			// TODO ============验证数据
+			// $this->validateSelf($request);
+
+			// 可添加字段
+			$fieldArr = ['name','intro','shop_id','pid'];
+			foreach($arr as $k=>$v) {
+				if(in_array($k, $fieldArr)) {
+					$invObj->$k = $v;
+				}
+			}	
+			$re = $invObj->save();
+
+			if($re != false) {
+				$message = '添加失败';
 			}else {
-				$arr['status'] = 'error';
+				$message = '添加成功';
 			}
-			echo json_encode($arr);
+			return redirect()->back()->with('message',$message);
 		}
 		
 	}
@@ -35,15 +45,19 @@ class Inventory_categoryController extends Controller {
 	 * 功能: 展示公司服务列表
 	 */
 	public function list() {
-		$listCols = Type::get();
-		return view('admin/type/list',['listCols'=>$listCols]);
+		$invObj = new Inventory_category;
+		$listArr = $invObj->getInventoryCategoryTree();
+		return view('admin/Inventory_category/list',['listArr'=>$listArr]);
 	}
+
 
 	/**
 	 * 功能: 根据id删除服务
 	 */
 	public function del($id) {
-		$re = Type::where('id',$id)->delete();
+		$InvObj = Inventory_category::where('id',$id)->first();
+		$InvObj->status = 9;
+		$re = $InvObj->save();
 		if ($re) {
 			$message = '';
 		}else {

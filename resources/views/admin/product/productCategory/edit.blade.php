@@ -7,7 +7,7 @@
             <!-- Start .row -->
             <!-- Start .page-header -->
             <div class="col-lg-12 heading">
-                <h1 class="page-header"><i class="im-table2"></i>商品分类列表</h1>
+                <h1 class="page-header"><i class="im-table2"></i>编辑商品分类</h1>
                 <!-- Start .bredcrumb -->
                 <ul id="crumb" class="breadcrumb">
                 </ul>
@@ -123,80 +123,106 @@
     <!-- End .content-wrapper -->
     <div class="clearfix"></div>
     <!-- start 商品分类列表 -->
-  <table class="table table-bordered table-responsive table-hover table-striped">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>分类名称</th>
-        <th>操作</th>
-      </tr>
-    </thead>
-    <tbody>
-        @foreach($allProdCates as $prodCate)
-            <tr class="tr_{{$prodCate['id']}}">
-                <td>{{$prodCate['id']}}</td>
-                <td>{{$prodCate['name']}}</td>
-                <td>
-                    <button type="button" class="btn btn-xs btn-success">
-                        <a href="{{url('admin/productCategory/detail',['id'=>$prodCate['id']])}}" style="color:white">查看</a>
-                    </button>
-                    <button type="button" class="btn btn-xs btn-primary">
-                        <a href="{{url('admin/productCategory/edit',['id'=>$prodCate['id']])}}" style="color:white">编辑</a>
-                    </button>
-                    <button type="button" id="p_{{$prodCate['id']}}" value="{{$prodCate['id']}}" class="btn btn-xs btn-danger">
-                        删除
-                    </button>
-                </td>
-            </tr>
-        @endforeach
-    </tbody>
-  </table>
-    <!-- end 商品分类列表 -->
+        <!-- 商品分类详情页，显示商品分类的所有信息，添加商品功能 ，查看分类下的所有商品-->
+        <hr>
+        <form action="{{url('admin/productCategory/update')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
+            {{csrf_field()}}
+    <!-- start 产品分类ID -->
+    <div class="form-group">
+      <div class="col-md-2">
+        <label class="control-label">产品分类ID:</label>
+      </div>
+      <div class="col-md-5">
+        <input type="hidden" class="form-control" name="id" value="{{$cate->id}}">
+      </div>
+    </div>
+    <!-- end 产品分类ID -->
+    <!-- start 名称 -->
+    <div class="form-group">
+      <div class="col-md-2">
+        <label class="control-label">产品分类名称:</label>
+      </div>
+      <div class="col-md-5">
+        <input class="form-control" name="name" value="{{$cate->name}}">
+      </div>
+    </div>
+    <!-- end 名称 -->
+    <!-- start 简介 -->
+    <div class="form-group">
+      <div class="col-md-2">
+        <label class="control-label">分类简介:</label>
+      </div>
+      <div class="col-md-5">
+        <textarea class="form-control" name="intro">{{$cate->intro}}</textarea>
+      </div>
+    </div>
+    <!-- end 简介 -->
+    <!-- start 父级分类 -->
+    <div class="form-group">
+      <div class="col-md-2">
+        <label class="control-label">父类:</label>
+      </div>
+      <div class="col-md-5">
+        <select name="pid" class="form-control" name="pid" value="{{$cate->pid}}" disabled="">
+            <option value="0">顶级分类</option>
+            @foreach($prodCates as $category)
+            <option value="{{$cate->id}}">{{$category['name']}}</option>
+            @endforeach
+        </select>
+      </div>
+    </div>
+    <!-- end 父级分类 -->
+    <!-- start 状态 -->
+    <div class="form-group">
+      <div class="col-md-2">
+        <label class="control-label">分类状态:</label>
+      </div>
+      <div class="col-md-5">
+        <input class="form-control"name="status" value = "{{$cate->status}}"/>
+      </div>
+    </div>
+    <!-- end 状态 -->
+    <!-- start 店铺 -->
+    <div class="form-group">
+      <div class="col-md-2">
+        <label class="control-label">店铺:</label>
+      </div>
+      <div class="col-md-5">
+        <input class="form-control"name="shop_id" value = "{{$cate->shop_id}}" disabled=""/>
+      </div>
+    </div>
+    <!-- end 状态 -->
+    <!-- start 创建时间 -->
+    <div class="form-group">
+      <div class="col-md-2">
+        <label class="control-label">创建时间:</label>
+      </div>
+      <div class="col-md-5">
+        <input class="form-control"name="created_at" value = "{{$cate->created_at}}" disabled=""/>
+      </div>
+    </div>
+    <!-- end 创建时间 -->
+        <!-- start 更新时间 -->
+    <div class="form-group">
+      <div class="col-md-2">
+        <label class="control-label">更新时间:</label>
+      </div>
+      <div class="col-md-5">
+        <input class="form-control"name="updated_at" value = "{{$cate->updated_at}}" disabled=""/>
+      </div>
+    </div>
+    <!-- end 更新时间 -->
+    <!-- start 添加、取消按钮 -->
+    <div class="form-group">
+      <div class="col-md-10 col-md-offset-2">
+        <input type="submit" value="修改" class="btn btn-primary">
+        <input type="reset" value="取消" class="btn btn-default">
+      </div>
+    </div>
+    <!-- end 添加、取消按钮 -->
+</form>
+<hr>
 </div>
 @endsection
 @section("js")
-
-<script src="{{asset('admin')}}/plugins/core/moment/moment.min.js"></script>
-<script src="{{asset('admin')}}/plugins/charts/sparklines/jquery.sparkline.js"></script>
-<script src="{{asset('admin')}}/plugins/charts/pie-chart/jquery.easy-pie-chart.js"></script>
-<script src="{{asset('admin')}}/plugins/forms/icheck/jquery.icheck.js"></script>
-<script src="{{asset('admin')}}/plugins/forms/tags/jquery.tagsinput.min.js"></script>
-<script src="{{asset('admin')}}/plugins/forms/tinymce/tinymce.min.js"></script>
-<script src="{{asset('admin')}}/plugins/forms/switch/jquery.onoff.min.js"></script>
-<script src="{{asset('admin')}}/plugins/forms/maxlength/bootstrap-maxlength.js"></script>
-<script src="{{asset('admin')}}/plugins/forms/bootstrap-filestyle/bootstrap-filestyle.js"></script>
-<script src="{{asset('admin')}}/plugins/forms/color-picker/spectrum.js"></script>
-<script src="{{asset('admin')}}/plugins/forms/daterangepicker/daterangepicker.js"></script>
-<script src="{{asset('admin')}}/plugins/forms/datetimepicker/bootstrap-datetimepicker.min.js"></script>
-<script src="{{asset('admin')}}/plugins/forms/globalize/globalize.js"></script>
-<script src="{{asset('admin')}}/plugins/forms/maskedinput/jquery.maskedinput.js"></script>
-<script src="{{asset('admin')}}/plugins/forms/select2/select2.js"></script>
-<script src="{{asset('admin')}}/plugins/forms/dual-list-box/jquery.bootstrap-duallistbox.js"></script>
-<script src="{{asset('admin')}}/plugins/forms/password/jquery-passy.js"></script>
-<script src="{{asset('admin')}}/plugins/forms/checkall/jquery.checkAll.js"></script>
-<script src="{{asset('admin')}}/plugins/misc/highlight/highlight.pack.js"></script>
-<script src="{{asset('admin')}}/plugins/misc/countTo/jquery.countTo.js"></script>
-<script src="{{asset('admin')}}/js/jquery.sprFlat.js"></script>
-<script src="{{asset('admin')}}/js/app.js"></script>
-<script src="{{asset('admin')}}/js/pages/forms.js"></script>
-<script type="text/javascript">
-    $(document).ready(function(){
-        // 选中一组中的button中的一个
-        $("[id^=p_]").click(function(){
-            var grandPa = this.parentNode.parentNode
-            var targetid = grandPa.children[0].innerText
-            $.ajax({
-                type: "GET",
-                url:"{{url('admin/productCategory/delete')}}",
-                data:'id='+targetid,
-                success:function(re){
-                    grandPa.remove();
-                },
-                error:function(re){
-
-                }
-            })
-        })
-        })
-</script>
 @endsection

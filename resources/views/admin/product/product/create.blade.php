@@ -1,4 +1,11 @@
 @extends("layouts/admin")
+@section("css")
+.mytextarea {
+    width: 316px;
+    height: 457px;
+    resize: none;
+}
+@endsection
 @section("content")
 <div id="content">
     <!-- Start .content-wrapper -->
@@ -7,7 +14,7 @@
             <!-- Start .row -->
             <!-- Start .page-header -->
             <div class="col-lg-12 heading">
-                <h1 class="page-header"><i class="im-table2"></i>商品分类列表</h1>
+                <h1 class="page-header"><i class="im-table2"></i>添加商品</h1>
                 <!-- Start .bredcrumb -->
                 <ul id="crumb" class="breadcrumb">
                 </ul>
@@ -122,40 +129,88 @@
     </div>
     <!-- End .content-wrapper -->
     <div class="clearfix"></div>
-    <!-- start 商品分类列表 -->
-  <table class="table table-bordered table-responsive table-hover table-striped">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>分类名称</th>
-        <th>操作</th>
-      </tr>
-    </thead>
-    <tbody>
-        @foreach($allProdCates as $prodCate)
-            <tr class="tr_{{$prodCate['id']}}">
-                <td>{{$prodCate['id']}}</td>
-                <td>{{$prodCate['name']}}</td>
-                <td>
-                    <button type="button" class="btn btn-xs btn-success">
-                        <a href="{{url('admin/productCategory/detail',['id'=>$prodCate['id']])}}" style="color:white">查看</a>
-                    </button>
-                    <button type="button" class="btn btn-xs btn-primary">
-                        <a href="{{url('admin/productCategory/edit',['id'=>$prodCate['id']])}}" style="color:white">编辑</a>
-                    </button>
-                    <button type="button" id="p_{{$prodCate['id']}}" value="{{$prodCate['id']}}" class="btn btn-xs btn-danger">
-                        删除
-                    </button>
-                </td>
-            </tr>
-        @endforeach
-    </tbody>
-  </table>
-    <!-- end 商品分类列表 -->
+    @if (count($errors) > 0)
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+    @if(isset($message))
+    <span><font color="red">$message</font></span>
+    @endif
+    <form action="doAdd" method="post" enctype="multipart/form-data" class="form-horizontal">
+        {{csrf_field()}}
+    <!-- start 名称 -->
+    <div class="form-group">
+      <div class="col-md-2">
+        <label class="control-label">产品名称:</label>
+      </div>
+      <div class="col-md-5">
+        <input class="form-control" type="text" name="name">
+      </div>
+      <div class="col-md-5">
+        <span class="help-block">请填写产品名称</span>
+      </div>
+    </div>
+    <!-- end 名称 -->
+    <!-- start 简介 -->
+    <div class="form-group">
+      <div class="col-md-2">
+        <label class="control-label">产品简介:</label>
+      </div>
+      <div class="col-md-5">
+        <textarea class="form-control"name="intro"></textarea>
+      </div>
+      <div class="col-md-5">
+        <span class="help-block">请填写产品简介</span>
+      </div>
+    </div>
+    <!-- end 简介 -->
+    <!-- start 产品分类 -->
+    <div class="form-group">
+      <div class="col-md-2">
+        <label class="control-label">:</label>
+      </div>
+      <div class="col-md-5">
+        <select name="product_id" class="form-control">
+            <option value="0">顶级分类</option>
+            @foreach($prodCates as $cate)
+            <option value="{{$cate['id']}}">{{$cate['name']}}</option>
+            @endforeach
+        </select>
+      </div>
+      <div class="col-md-5">
+        <span class="help-block">请选择父类</span>
+      </div>
+    </div>
+    <!-- end 父级分类 -->
+    <!-- start 添加产品图片 -->
+
+    <!-- end 添加产品图片 -->
+    <!-- start 单价 -->
+
+    <!-- end 单价 -->
+    <!-- start 进价-->
+
+    <!-- end 进价-->
+    <!-- start 虚拟数量 -->
+
+    <!-- end 虚拟数量-->
+    <!-- start 添加、取消按钮 -->
+    <div class="form-group">
+      <div class="col-md-10 col-md-offset-2">
+        <input type="submit" value="添加" class="btn btn-primary">
+        <input type="reset" value="取消" class="btn btn-default">
+      </div>
+    </div>
+    <!-- end 添加、取消按钮 -->
+</form>
 </div>
 @endsection
 @section("js")
-
 <script src="{{asset('admin')}}/plugins/core/moment/moment.min.js"></script>
 <script src="{{asset('admin')}}/plugins/charts/sparklines/jquery.sparkline.js"></script>
 <script src="{{asset('admin')}}/plugins/charts/pie-chart/jquery.easy-pie-chart.js"></script>
@@ -179,24 +234,4 @@
 <script src="{{asset('admin')}}/js/jquery.sprFlat.js"></script>
 <script src="{{asset('admin')}}/js/app.js"></script>
 <script src="{{asset('admin')}}/js/pages/forms.js"></script>
-<script type="text/javascript">
-    $(document).ready(function(){
-        // 选中一组中的button中的一个
-        $("[id^=p_]").click(function(){
-            var grandPa = this.parentNode.parentNode
-            var targetid = grandPa.children[0].innerText
-            $.ajax({
-                type: "GET",
-                url:"{{url('admin/productCategory/delete')}}",
-                data:'id='+targetid,
-                success:function(re){
-                    grandPa.remove();
-                },
-                error:function(re){
-
-                }
-            })
-        })
-        })
-</script>
 @endsection

@@ -7,7 +7,7 @@
             <!-- Start .row -->
             <!-- Start .page-header -->
             <div class="col-lg-12 heading">
-                <h1 class="page-header"><i class="im-table2"></i>商品分类列表</h1>
+                <h1 class="page-header"><i class="im-table2"></i>员工分类列表</h1>
                 <!-- Start .bredcrumb -->
                 <ul id="crumb" class="breadcrumb">
                 </ul>
@@ -122,81 +122,19 @@
     </div>
     <!-- End .content-wrapper -->
     <div class="clearfix"></div>
-    <!-- start 商品分类列表 -->
-  <table class="table table-bordered table-responsive table-hover table-striped">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>分类名称</th>
-        <th>操作</th>
-      </tr>
-    </thead>
-    <tbody>
-        @foreach($allProdCates as $prodCate)
-            <tr class="tr_{{$prodCate['id']}}">
-                <td>{{$prodCate['id']}}</td>
-                <td>{{$prodCate['name']}}</td>
-                <td>
-                    <button type="button" class="btn btn-xs btn-success">
-                        <a href="{{url('admin/productCategory/detail',['id'=>$prodCate['id']])}}" style="color:white">查看</a>
-                    </button>
-                    <button type="button" class="btn btn-xs btn-primary">
-                        <a href="{{url('admin/productCategory/edit',['id'=>$prodCate['id']])}}" style="color:white">编辑</a>
-                    </button>
-                    <button type="button" id="p_{{$prodCate['id']}}" value="{{$prodCate['id']}}" class="btn btn-xs btn-danger">
-                        删除
-                    </button>
-                </td>
-            </tr>
-        @endforeach
-    </tbody>
-  </table>
-    <!-- end 商品分类列表 -->
 </div>
 @endsection
 @section("js")
-
 <script src="{{asset('admin')}}/plugins/core/moment/moment.min.js"></script>
 <script src="{{asset('admin')}}/plugins/charts/sparklines/jquery.sparkline.js"></script>
 <script src="{{asset('admin')}}/plugins/charts/pie-chart/jquery.easy-pie-chart.js"></script>
 <script src="{{asset('admin')}}/plugins/forms/icheck/jquery.icheck.js"></script>
 <script src="{{asset('admin')}}/plugins/forms/tags/jquery.tagsinput.min.js"></script>
-<script src="{{asset('admin')}}/plugins/forms/tinymce/tinymce.min.js"></script>
 <script src="{{asset('admin')}}/plugins/forms/switch/jquery.onoff.min.js"></script>
-<script src="{{asset('admin')}}/plugins/forms/maxlength/bootstrap-maxlength.js"></script>
-<script src="{{asset('admin')}}/plugins/forms/bootstrap-filestyle/bootstrap-filestyle.js"></script>
-<script src="{{asset('admin')}}/plugins/forms/color-picker/spectrum.js"></script>
-<script src="{{asset('admin')}}/plugins/forms/daterangepicker/daterangepicker.js"></script>
-<script src="{{asset('admin')}}/plugins/forms/datetimepicker/bootstrap-datetimepicker.min.js"></script>
-<script src="{{asset('admin')}}/plugins/forms/globalize/globalize.js"></script>
-<script src="{{asset('admin')}}/plugins/forms/maskedinput/jquery.maskedinput.js"></script>
-<script src="{{asset('admin')}}/plugins/forms/select2/select2.js"></script>
-<script src="{{asset('admin')}}/plugins/forms/dual-list-box/jquery.bootstrap-duallistbox.js"></script>
-<script src="{{asset('admin')}}/plugins/forms/password/jquery-passy.js"></script>
-<script src="{{asset('admin')}}/plugins/forms/checkall/jquery.checkAll.js"></script>
+<script src="{{asset('admin')}}/plugins/forms/tinymce/tinymce.min.js"></script>
 <script src="{{asset('admin')}}/plugins/misc/highlight/highlight.pack.js"></script>
 <script src="{{asset('admin')}}/plugins/misc/countTo/jquery.countTo.js"></script>
 <script src="{{asset('admin')}}/js/jquery.sprFlat.js"></script>
 <script src="{{asset('admin')}}/js/app.js"></script>
-<script src="{{asset('admin')}}/js/pages/forms.js"></script>
-<script type="text/javascript">
-    $(document).ready(function(){
-        // 选中一组中的button中的一个
-        $("[id^=p_]").click(function(){
-            var grandPa = this.parentNode.parentNode
-            var targetid = grandPa.children[0].innerText
-            $.ajax({
-                type: "GET",
-                url:"{{url('admin/productCategory/delete')}}",
-                data:'id='+targetid,
-                success:function(re){
-                    grandPa.remove();
-                },
-                error:function(re){
-
-                }
-            })
-        })
-        })
-</script>
+<script src="{{asset('admin')}}/js/pages/panels.js"></script>
 @endsection

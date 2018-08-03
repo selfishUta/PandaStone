@@ -17,9 +17,9 @@
             <li>
                 <a href="#"> 管理商品分类<i class="im-paragraph-justify"></i></a>
                 <ul class="nav sub">
-                    <li><a href="list"><i class="ec-pencil2"></i>商品分类列表</a>
+                    <li><a href="{{url('admin/productCategory/list')}}"><i class="ec-pencil2"></i>商品分类列表</a>
                     </li>
-                    <li><a href="add"><i class="im-checkbox-checked"></i>添加商品分类</a>
+                    <li><a href="{{url('admin/productCategory/add')}}"><i class="im-checkbox-checked"></i>添加商品分类</a>
                     </li>
                 </ul>
             </li>
@@ -27,6 +27,8 @@
                 <a href="#"> 库存分类管理 <i class="im-paragraph-justify"></i></a>
                 <ul class="nav sub">
                     <li><a href="{{url('admin/inventory_category/add')}}"><i class="ec-pencil2"></i>添加分类</a>
+                    </li>
+                    <li><a href="{{url('admin/inventory_category/list')}}"><i class="ec-pencil2"></i>分类列表</a>
                     </li>
                 </ul>
             </li>
