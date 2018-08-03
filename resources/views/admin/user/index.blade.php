@@ -1,11 +1,4 @@
 @extends("layouts/admin")
-@section("css")
-.mytextarea {
-    width: 316px;
-    height: 457px;
-    resize: none;
-}
-@endsection
 @section("content")
 <div id="content">
     <!-- Start .content-wrapper -->
@@ -14,7 +7,7 @@
             <!-- Start .row -->
             <!-- Start .page-header -->
             <div class="col-lg-12 heading">
-                <h1 class="page-header"><i class="im-table2"></i>添加商品分类</h1>
+                <h1 class="page-header"><i class="im-table2"></i>普通用户分类列表</h1>
                 <!-- Start .bredcrumb -->
                 <ul id="crumb" class="breadcrumb">
                 </ul>
@@ -129,56 +122,6 @@
     </div>
     <!-- End .content-wrapper -->
     <div class="clearfix"></div>
-    <form action="doAdd" method="post" enctype="multipart/form-data" class="form-horizontal">
-        {{csrf_field()}}
-    <!-- start 名称 -->
-    <div class="form-group">
-      <div class="col-md-2">
-        <label class="control-label">产品分类名称:</label>
-      </div>
-      <div class="col-md-5">
-        <input class="form-control" type="text" name="name">
-      </div>
-      <div class="col-md-5">
-        <span class="help-block">请填写分类名称</span>
-      </div>
-    </div>
-    <!-- end 名称 -->
-    <!-- start 简介 -->
-    <div class="form-group">
-      <div class="col-md-2">
-        <label class="control-label">分类简介:</label>
-      </div>
-      <div class="col-md-5">
-        <textarea class="form-control"name="intro"></textarea>
-      </div>
-      <div class="col-md-5">
-        <span class="help-block">请填写分类简介</span>
-      </div>
-    </div>
-    <!-- end 简介 -->
-    <!-- start 父级分类 -->
-    <div class="form-group">
-      <div class="col-md-2">
-        <label class="control-label">父类:</label>
-      </div>
-      <div class="col-md-5">
-        <select name="pid" class="form-control">
-            <option value="0">顶级分类</option>
-        </select>
-      </div>
-      <div class="col-md-5">
-        <span class="help-block">请选择父类</span>
-      </div>
-    </div>
-    <!-- end 父级分类 -->
-    <div class="form-group">
-      <div class="col-md-10 col-md-offset-2">
-        <input type="submit" value="添加" class="btn btn-primary">
-        <input type="reset" value="取消" class="btn btn-default">
-      </div>
-    </div>
-</form>
 </div>
 @endsection
 @section("js")

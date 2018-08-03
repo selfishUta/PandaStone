@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\ProductCategory;
+use Illuminate\Http\Request;
 
 class ProductCategoryController extends Controller
 {
@@ -14,16 +16,26 @@ class ProductCategoryController extends Controller
         // dd('lala');
         return view("admin.product.productCategory.list");
     }
-
     /**
-     * 添加商品分类
+     * 展示添加商品分类
      */
     public function add()
     {
         //查询到所有的分类并将分类显示出来
+        $allProdCate = ProductCategory::getAllCatesByid();
+        dd($allProdCate);
         return view("admin.product.ProductCategory.add");
     }
 
+    /**
+     * 添加商品分类
+     * @param  Request $request [description]
+     * @return [type]           [description]
+     */
+    public function doAdd(Request $request)
+    {
+        dd($request->all());
+    }
     /**
      * 查看商品分类下的所有商品
      */

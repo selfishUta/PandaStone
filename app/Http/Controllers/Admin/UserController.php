@@ -24,12 +24,12 @@ class UserController extends Controller {
 		$this->validate($request,
 			[
 				'username' => 'required',
-				'password' => 'required|min:5'
+				'password' => 'required|min:5',
 			],
 			[
 				'username.required' => '用户名不能为空',
 				'password.required' => '密码不能为空',
-				'password.min' => '密码最小5位'
+				'password.min' => '密码最小5位',
 			]
 		);
 		//$result = User::where('username',$username)->where('password',$password)->count();
@@ -48,7 +48,7 @@ class UserController extends Controller {
 	 */
 	public function list() {
 		$listCols = User::get();
-		return view('admin/user/list',['listCols'=>$listCols]);
+		return view('admin/user/list', ['listCols' => $listCols]);
 	}
 
 	/**
@@ -65,12 +65,30 @@ class UserController extends Controller {
 	/**
 	 * 功能: 请求:get|post   显示添加页面,添加用户
 	 */
-	public function add(Request $request){
-		if($request->isMethod('get')){
+	public function add(Request $request) {
+		if ($request->isMethod('get')) {
 			return view('admin/user/add');
-		}elseif($request->isMethod('post')){
+		} elseif ($request->isMethod('post')) {
 
 		}
+	}
+
+	/**
+	 * 功能:普通用户列表展示
+	 */
+	public function index() {
+		$userInfo = User::where('status', 0)->get();
+
+		return view('admin/user/index', ['userInfo' => $userInfo]);
+	}
+
+	/**
+	 * 功能:员工列表展示
+	 */
+	public function staff() {
+		$userInfo = User::where('status', 1)->get();
+
+		return view('admin/user/staff', ['userInfo' => $userInfo]);
 	}
 
 }
