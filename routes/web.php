@@ -57,8 +57,22 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     // 后台管理商品模块--商品分类添加展示页
     Route::get("productCategory/add", "ProductCategoryController@add");
 
-    // 后天管理商品模块--添加商品分类
+    // 后台管理商品模块--添加商品分类
     Route::post("productCategory/doAdd", "ProductCategoryController@doAdd");
+
+    // 商品分类详情页面
+    Route::get("productCategory/detail/{id}", "ProductCategoryController@detail");
+
+    // 后台管理商品模块--商品分类编辑展示页
+    Route::get("productCategory/edit/{id}", "ProductCategoryController@edit");
+
+    // 后台管理商品模块--编辑商品分类
+    Route::post("productCategory/update", "ProductCategoryController@update");
+
+    // 后台管理商品模块--删除商品分类
+    Route::post("productCategory/delete", "ProductCategoryController@delete");
+
+    //======================================================================
 
     // 后台管理用户模块--员工分类列表
     Route::get('user/staff', "UserController@staff");

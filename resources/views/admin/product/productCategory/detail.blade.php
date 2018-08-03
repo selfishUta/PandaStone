@@ -7,7 +7,7 @@
             <!-- Start .row -->
             <!-- Start .page-header -->
             <div class="col-lg-12 heading">
-                <h1 class="page-header"><i class="im-table2"></i>商品分类列表</h1>
+                <h1 class="page-header"><i class="im-table2"></i>商品分类详情</h1>
                 <!-- Start .bredcrumb -->
                 <ul id="crumb" class="breadcrumb">
                 </ul>
@@ -123,51 +123,97 @@
     <!-- End .content-wrapper -->
     <div class="clearfix"></div>
     <!-- start 商品分类列表 -->
-  <table class="table table-bordered table-responsive table-hover table-striped">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>分类名称</th>
-        <th>操作</th>
-      </tr>
-    </thead>
-    <tbody>
-        @foreach($allProdCates as $prodCate)
-            <tr>
-                <td>{{$prodCate['id']}}</td>
-                <td>{{$prodCate['name']}}</td>
-                <td>
-                    <button type="button" class="btn btn-xs btn-success">
-                        <a href="{{url('admin/productCategory/detail',['id'=>$prodCate['id']])}}" style="color:white">查看</a>
-                    </button>
-                    <button type="button" class="btn btn-xs btn-primary">
-                        <a href="{{url('admin/productCategory/edit',['id'=>$prodCate['id']])}}" style="color:white">编辑</a>
-                    </button>
-                    <button type="button" class="btn btn-xs btn-danger">
-                        <a href="javascript:void(0);" id="mydelete" style="color:white">删除</a>
-                    </button>
-                </td>
-            </tr>
-        @endforeach
-    </tbody>
-  </table>
-    <!-- end 商品分类列表 -->
+        <!-- 商品分类详情页，显示商品分类的所有信息，添加商品功能 ，查看分类下的所有商品-->
+        <hr>
+        <form action="#" method="post" enctype="multipart/form-data" class="form-horizontal">
+    <!-- start 产品分类ID -->
+    <div class="form-group">
+      <div class="col-md-2">
+        <label class="control-label">产品分类ID:</label>
+      </div>
+      <div class="col-md-5">
+        <input class="form-control" value="{{$cate->id}}" disabled="">
+      </div>
+    </div>
+    <!-- end 产品分类ID -->
+    <!-- start 名称 -->
+    <div class="form-group">
+      <div class="col-md-2">
+        <label class="control-label">产品分类名称:</label>
+      </div>
+      <div class="col-md-5">
+        <input class="form-control" value="{{$cate->name}}" disabled="">
+      </div>
+    </div>
+    <!-- end 名称 -->
+    <!-- start 简介 -->
+    <div class="form-group">
+      <div class="col-md-2">
+        <label class="control-label">分类简介:</label>
+      </div>
+      <div class="col-md-5">
+        <textarea class="form-control"name="intro" disabled="">{{$cate->intro}}</textarea>
+      </div>
+    </div>
+    <!-- end 简介 -->
+    <!-- start 父级分类 -->
+    <div class="form-group">
+      <div class="col-md-2">
+        <label class="control-label">父类:</label>
+      </div>
+      <div class="col-md-5">
+        <select name="pid" class="form-control" value="{{$cate->pid}}" disabled="">
+            <option value="0">顶级分类</option>
+            @foreach($prodCates as $category)
+            <option value="{{$cate->id}}">{{$category['name']}}</option>
+            @endforeach
+        </select>
+      </div>
+    </div>
+    <!-- end 父级分类 -->
+    <!-- start 状态 -->
+    <div class="form-group">
+      <div class="col-md-2">
+        <label class="control-label">分类状态:</label>
+      </div>
+      <div class="col-md-5">
+        <input class="form-control"name="intro" value = "{{$cate->status}}" disabled=""/>
+      </div>
+    </div>
+    <!-- end 状态 -->
+    <!-- start 店铺 -->
+    <div class="form-group">
+      <div class="col-md-2">
+        <label class="control-label">店铺:</label>
+      </div>
+      <div class="col-md-5">
+        <input class="form-control"name="intro" value = "{{$cate->shop_id}}" disabled=""/>
+      </div>
+    </div>
+    <!-- end 状态 -->
+    <!-- start 创建时间 -->
+    <div class="form-group">
+      <div class="col-md-2">
+        <label class="control-label">创建时间:</label>
+      </div>
+      <div class="col-md-5">
+        <input class="form-control"name="intro" value = "{{$cate->created_at}}" disabled=""/>
+      </div>
+    </div>
+    <!-- end 创建时间 -->
+        <!-- start 更新时间 -->
+    <div class="form-group">
+      <div class="col-md-2">
+        <label class="control-label">更新时间:</label>
+      </div>
+      <div class="col-md-5">
+        <input class="form-control"name="intro" value = "{{$cate->updated_at}}" disabled=""/>
+      </div>
+    </div>
+    <!-- end 更新时间 -->
+</form>
+<hr>
 </div>
 @endsection
 @section("js")
-<script type="text/javascript">
-    $(document).ready(function(){
-        $("#mydelete").click(function(){
-            var targetid = this.parentNode;
-            console.log('你好');
-            console.log(targetid);
-            // $.ajax({
-            //     type: "POST",
-            //     url:"{{url('admin/productCategory/delete')}}",
-            //     data:
-
-            // });
-        });
-    });
-</script>
 @endsection

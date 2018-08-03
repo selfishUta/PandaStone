@@ -110,5 +110,6 @@
         <script src="{{asset('admin')}}/js/jquery.sprFlat.js"></script>
         <script src="{{asset('admin')}}/js/app.js"></script>
         <script src="{{asset('admin')}}/js/pages/dashboard.js"></script>
+
     </body>
 </html>

@@ -1,11 +1,4 @@
 @extends("layouts/admin")
-@section("css")
-.mytextarea {
-    width: 316px;
-    height: 457px;
-    resize: none;
-}
-@endsection
 @section("content")
 <div id="content">
     <!-- Start .content-wrapper -->
@@ -14,7 +7,7 @@
             <!-- Start .row -->
             <!-- Start .page-header -->
             <div class="col-lg-12 heading">
-                <h1 class="page-header"><i class="im-table2"></i>添加商品分类</h1>
+                <h1 class="page-header"><i class="im-table2"></i>编辑商品分类</h1>
                 <!-- Start .bredcrumb -->
                 <ul id="crumb" class="breadcrumb">
                 </ul>
@@ -129,27 +122,28 @@
     </div>
     <!-- End .content-wrapper -->
     <div class="clearfix"></div>
-    @if (count($errors) > 0)
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
+    <!-- start 商品分类列表 -->
+        <!-- 商品分类详情页，显示商品分类的所有信息，添加商品功能 ，查看分类下的所有商品-->
+        <hr>
+        <form action="{{url('admin/productCategory/update')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
+            {{csrf_field()}}
+    <!-- start 产品分类ID -->
+    <div class="form-group">
+      <div class="col-md-2">
+        <label class="control-label">产品分类ID:</label>
+      </div>
+      <div class="col-md-5">
+        <input type="hidden" class="form-control" name="id" value="{{$cate->id}}">
+      </div>
     </div>
-    @endif
-    <form action="doAdd" method="post" enctype="multipart/form-data" class="form-horizontal">
-        {{csrf_field()}}
+    <!-- end 产品分类ID -->
     <!-- start 名称 -->
     <div class="form-group">
       <div class="col-md-2">
         <label class="control-label">产品分类名称:</label>
       </div>
       <div class="col-md-5">
-        <input class="form-control" type="text" name="name">
-      </div>
-      <div class="col-md-5">
-        <span class="help-block">请填写分类名称</span>
+        <input class="form-control" name="name" value="{{$cate->name}}">
       </div>
     </div>
     <!-- end 名称 -->
@@ -159,10 +153,7 @@
         <label class="control-label">分类简介:</label>
       </div>
       <div class="col-md-5">
-        <textarea class="form-control"name="intro"></textarea>
-      </div>
-      <div class="col-md-5">
-        <span class="help-block">请填写分类简介</span>
+        <textarea class="form-control" name="intro">{{$cate->intro}}</textarea>
       </div>
     </div>
     <!-- end 简介 -->
@@ -172,25 +163,65 @@
         <label class="control-label">父类:</label>
       </div>
       <div class="col-md-5">
-        <select name="pid" class="form-control">
+        <select name="pid" class="form-control" name="pid" value="{{$cate->pid}}" disabled="">
             <option value="0">顶级分类</option>
-            @foreach($prodCates as $cate)
-            <option value="{{$cate['id']}}">{{$cate['name']}}</option>
+            @foreach($prodCates as $category)
+            <option value="{{$cate->id}}">{{$category['name']}}</option>
             @endforeach
         </select>
       </div>
-      <div class="col-md-5">
-        <span class="help-block">请选择父类</span>
-      </div>
     </div>
     <!-- end 父级分类 -->
+    <!-- start 状态 -->
+    <div class="form-group">
+      <div class="col-md-2">
+        <label class="control-label">分类状态:</label>
+      </div>
+      <div class="col-md-5">
+        <input class="form-control"name="status" value = "{{$cate->status}}"/>
+      </div>
+    </div>
+    <!-- end 状态 -->
+    <!-- start 店铺 -->
+    <div class="form-group">
+      <div class="col-md-2">
+        <label class="control-label">店铺:</label>
+      </div>
+      <div class="col-md-5">
+        <input class="form-control"name="shop_id" value = "{{$cate->shop_id}}" disabled=""/>
+      </div>
+    </div>
+    <!-- end 状态 -->
+    <!-- start 创建时间 -->
+    <div class="form-group">
+      <div class="col-md-2">
+        <label class="control-label">创建时间:</label>
+      </div>
+      <div class="col-md-5">
+        <input class="form-control"name="created_at" value = "{{$cate->created_at}}" disabled=""/>
+      </div>
+    </div>
+    <!-- end 创建时间 -->
+        <!-- start 更新时间 -->
+    <div class="form-group">
+      <div class="col-md-2">
+        <label class="control-label">更新时间:</label>
+      </div>
+      <div class="col-md-5">
+        <input class="form-control"name="updated_at" value = "{{$cate->updated_at}}" disabled=""/>
+      </div>
+    </div>
+    <!-- end 更新时间 -->
+    <!-- start 添加、取消按钮 -->
     <div class="form-group">
       <div class="col-md-10 col-md-offset-2">
-        <input type="submit" value="添加" class="btn btn-primary">
+        <input type="submit" value="修改" class="btn btn-primary">
         <input type="reset" value="取消" class="btn btn-default">
       </div>
     </div>
+    <!-- end 添加、取消按钮 -->
 </form>
+<hr>
 </div>
 @endsection
 @section("js")

@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProductCategory extends Model
 {
-    protected $table = "product_category";
-
+    protected $table   = "product_category";
+    public $timestamps = true;
     /**
      * 根据商品分类获取该分类下的所有分类
      * @param  int $id    分类id

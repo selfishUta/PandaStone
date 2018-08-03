@@ -187,12 +187,14 @@
       </div>
     </div>
     <!-- end 父级分类 -->
+    <!-- start 添加、取消按钮 -->
     <div class="form-group">
       <div class="col-md-10 col-md-offset-2">
         <input type="submit" value="添加" class="btn btn-primary">
         <input type="reset" value="取消" class="btn btn-default">
       </div>
     </div>
+    <!-- end 添加、取消按钮 -->
 </form>
 </div>
 @endsection
