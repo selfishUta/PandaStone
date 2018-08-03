@@ -133,7 +133,7 @@
     </thead>
     <tbody>
         @foreach($allProdCates as $prodCate)
-            <tr>
+            <tr class="tr_{{$prodCate['id']}}">
                 <td>{{$prodCate['id']}}</td>
                 <td>{{$prodCate['name']}}</td>
                 <td>
@@ -143,8 +143,8 @@
                     <button type="button" class="btn btn-xs btn-primary">
                         <a href="{{url('admin/productCategory/edit',['id'=>$prodCate['id']])}}" style="color:white">编辑</a>
                     </button>
-                    <button type="button" class="btn btn-xs btn-danger">
-                        <a href="javascript:void(0);" id="mydelete" style="color:white">删除</a>
+                    <button type="button" id="p_{{$prodCate['id']}}" value="{{$prodCate['id']}}" class="btn btn-xs btn-danger">
+                        删除
                     </button>
                 </td>
             </tr>
@@ -155,21 +155,7 @@
 </div>
 @endsection
 @section("js")
-<script type="text/javascript">
-    $(document).ready(function(){
-        $("#mydelete").click(function(){
-            var targetid = this;
-            console.log('你好');
-            console.log(targetid);
-            // $.ajax({
-            //     type: "POST",
-            //     url:"{{url('admin/productCategory/delete')}}",
-            //     data:
 
-            // });
-        });
-    });
-</script>
 <script src="{{asset('admin')}}/plugins/core/moment/moment.min.js"></script>
 <script src="{{asset('admin')}}/plugins/charts/sparklines/jquery.sparkline.js"></script>
 <script src="{{asset('admin')}}/plugins/charts/pie-chart/jquery.easy-pie-chart.js"></script>
@@ -193,4 +179,24 @@
 <script src="{{asset('admin')}}/js/jquery.sprFlat.js"></script>
 <script src="{{asset('admin')}}/js/app.js"></script>
 <script src="{{asset('admin')}}/js/pages/forms.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        // 选中一组中的button中的一个
+        $("[id^=p_]").click(function(){
+            var grandPa = this.parentNode.parentNode
+            var targetid = grandPa.children[0].innerText
+            $.ajax({
+                type: "GET",
+                url:"{{url('admin/productCategory/delete')}}",
+                data:'id='+targetid,
+                success:function(re){
+                    grandPa.remove();
+                },
+                error:function(re){
+
+                }
+            })
+        })
+        })
+</script>
 @endsection

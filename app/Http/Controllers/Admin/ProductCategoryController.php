@@ -129,12 +129,28 @@ class ProductCategoryController extends Controller
     public function detail($cateId)
     {
         $cate = ProductCategory::where('id', $cateId)->first();
-        //dd($cate);
         return view("admin.product.productCategory.detail", ['cate' => $cate, 'prodCates' => $this->prodCates]);
     }
 
-    public function delete(Resquest $request)
+    public function delete(Request $request)
     {
-
+        $id   = $request['id'];
+        $data = ProductCategory::find($id);
+        $re   = $data->where('id', $id)->update(['status' => 9]);
+        if ($re) {
+            $data = [
+                'success' => true,
+                'msg'     => '删除成功',
+                'data'    => $id,
+            ];
+            echo json_encode($data);
+        } else {
+            $data = [
+                'success' => false,
+                'msg'     => '删除失败',
+                'data'    => null,
+            ];
+            echo json_decode($data);
+        }
     }
 }

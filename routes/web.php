@@ -59,7 +59,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::get('inventory_category/list', 'Inventory_categoryController@list');
 
     // 后台库存分类删除操作
-    Route::get('inventory_category/del/{id}', 'Inventory_categoryController@del')->where(['id'=>'[1-9]\d*']);
+    Route::get('inventory_category/del/{id}', 'Inventory_categoryController@del')->where(['id' => '[1-9]\d*']);
 
     //=================================================================
     // 后台管理商品模块--商品分类列表
@@ -81,7 +81,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::post("productCategory/update", "ProductCategoryController@update");
 
     // 后台管理商品模块--删除商品分类
-    Route::post("productCategory/delete", "ProductCategoryController@delete");
+    Route::get("productCategory/delete", "ProductCategoryController@delete");
 
     //======================================================================
 
@@ -89,5 +89,5 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::get('user/staff', "UserController@staff");
 
     //=================================================================
-    
+
 });
