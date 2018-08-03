@@ -55,7 +55,9 @@ class Inventory_categoryController extends Controller {
 	 * 功能: 根据id删除服务
 	 */
 	public function del($id) {
-		$re = Type::where('id',$id)->delete();
+		$InvObj = Inventory_category::where('id',$id)->first();
+		$InvObj->status = 9;
+		$re = $InvObj->save();
 		if ($re) {
 			$message = '';
 		}else {

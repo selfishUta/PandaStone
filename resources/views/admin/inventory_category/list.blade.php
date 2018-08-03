@@ -162,7 +162,7 @@
 	                                    <td class="center">{{$v['updated_at']}}</td>
 	                                    <td class="center">
 	                                    	<a href="">编辑</a>
-	                                    	<a href="">删除</a>
+	                                    	<a href="{{url('admin/inventory_category/del',['id'=>$v['id']])}}">删除</a>
 	                                    </td>
 	                                </tr>
 	                                @endforeach

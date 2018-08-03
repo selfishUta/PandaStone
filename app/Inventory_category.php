@@ -17,7 +17,6 @@ class Inventory_category extends Model {
 		// 获取一级分类
 		$cols = $this->select('inventory_category.*', 't1.name as pname')
 			->where('inventory_category.pid', '=', $pid)
-			->where('inventory_category.status', '<', 9)
 			->leftjoin('inventory_category as t1', 't1.id', '=', 'inventory_category.pid')
 			->get();
 		$str = str_repeat('--', $num);

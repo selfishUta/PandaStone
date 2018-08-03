@@ -58,6 +58,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
     // 后台库存分类添加页面
     Route::get('inventory_category/list', 'Inventory_categoryController@list');
 
+    // 后台库存分类删除操作
+    Route::get('inventory_category/del/{id}', 'Inventory_categoryController@del')->where(['id'=>'[1-9]\d*']);
+
     //=================================================================
     // 后台管理商品模块--商品分类列表
     Route::get("productCategory/list", "ProductCategoryController@list");
