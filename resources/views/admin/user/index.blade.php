@@ -1,4 +1,22 @@
 @extends("layouts/admin")
+@section('css')
+#usertable th{
+    text-align:center;
+}
+#usertable tr:first-child th{
+    color:#000;
+    font-size:16px;
+    font-weight:bold;
+}
+#page{
+    margin-top:10px;
+    margin-left:500px;
+}
+#doSearch{
+    margin-left:800px;
+    margin-bottom:20px;
+}
+@endsection
 @section("content")
 <div id="content">
     <!-- Start .content-wrapper -->
@@ -7,117 +25,75 @@
             <!-- Start .row -->
             <!-- Start .page-header -->
             <div class="col-lg-12 heading">
+                @if(session()->has('message'))
+                <div id="message">
+                    {{session()->get('message')}}<a href="javascript:message();">X</a>
+                </div>
+                @endif
                 <h1 class="page-header"><i class="im-table2"></i>普通用户分类列表</h1>
                 <!-- Start .bredcrumb -->
                 <ul id="crumb" class="breadcrumb">
-                    <li><i class="im-home"></i><a href="index.html">Home</a><i class="en-arrow-right7"></i></li>
-                    <li><i class="im-paragraph-justify"></i><a href="#">用户分类管理</a><i class="en-arrow-right7"></i></li>
-                    <li><i class="im-checkbox-checked"></i> 普通用户分类列表</li>
                 </ul>
                 <!-- End .breadcrumb -->
-                <!-- Start .option-buttons -->
-                <div class="option-buttons">
-                    <div class="btn-toolbar" role="toolbar">
-                        <div class="btn-group">
-                            <a id="clear-localstorage" class="btn tip" title="Reset panels position">
-                                <i class="ec-refresh color-red s24"></i>
-                            </a>
-                        </div>
-                        <div class="btn-group dropdown">
-                            <a class="btn dropdown-toggle" data-toggle="dropdown" id="dropdownMenu1"><i class="br-grid s24"></i></a>
-                            <div class="dropdown-menu pull-right" role="menu" aria-labelledby="dropdownMenu1">
-                                <div class="option-dropdown">
-                                    <div class="shortcut-button">
-                                        <a href="#">
-                                            <i class="im-pie"></i>
-                                            <span>Earning Stats</span>
-                                        </a>
-                                    </div>
-                                    <div class="shortcut-button">
-                                        <a href="#">
-                                            <i class="ec-images color-dark"></i>
-                                            <span>Gallery</span>
-                                        </a>
-                                    </div>
-                                    <div class="shortcut-button">
-                                        <a href="#">
-                                            <i class="en-light-bulb color-orange"></i>
-                                            <span>Fresh ideas</span>
-                                        </a>
-                                    </div>
-                                    <div class="shortcut-button">
-                                        <a href="#">
-                                            <i class="ec-link color-blue"></i>
-                                            <span>Links</span>
-                                        </a>
-                                    </div>
-                                    <div class="shortcut-button">
-                                        <a href="#">
-                                            <i class="ec-support color-red"></i>
-                                            <span>Support</span>
-                                        </a>
-                                    </div>
-                                    <div class="shortcut-button">
-                                        <a href="#">
-                                            <i class="st-lock color-teal"></i>
-                                            <span>Lock area</span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="btn-group dropdown">
-                            <a class="btn dropdown-toggle" data-toggle="dropdown" id="dropdownMenu2"><i class="ec-pencil s24"></i></a>
-                            <div class="dropdown-menu pull-right" role="menu" aria-labelledby="dropdownMenu2">
-                                <div class="option-dropdown">
-                                    <div class="row">
-                                        <p class="col-lg-12">Quick post</p>
-                                        <form class="form-horizontal" role="form">
-                                            <div class="form-group">
-                                                <div class="col-lg-12">
-                                                    <input type="text" class="form-control" placeholder="Enter title">
-                                                </div>
-                                            </div>
-                                            <!-- End .form-group  -->
-                                            <div class="form-group">
-                                                <div class="col-lg-12">
-                                                    <textarea class="form-control wysiwyg" placeholder="Enter text"></textarea>
-                                                </div>
-                                            </div>
-                                            <!-- End .form-group  -->
-                                            <div class="form-group">
-                                                <div class="col-lg-12">
-                                                    <input type="text" class="form-control tags1" placeholder="Enter tags">
-                                                </div>
-                                            </div>
-                                            <!-- End .form-group  -->
-                                            <div class="form-group">
-                                                <div class="col-lg-12">
-                                                    <button class="btn btn-default btn-xs">Save Draft</button>
-                                                    <button class="btn btn-success btn-xs pull-right">Publish</button>
-                                                </div>
-                                            </div>
-                                            <!-- End .form-group  -->
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="btn-group">
-                            <a class="btn dropdown-toggle" data-toggle="dropdown" id="dropdownMenu3"><i class="ec-help s24"></i></a>
-                            <div class="dropdown-menu pull-right" role="menu" aria-labelledby="dropdownMenu3">
-                                <div class="option-dropdown">
-                                    <p>First time visitor ? <a href="#" id="app-tour" class="btn btn-success ml15">Take app tour</a>
-                                    </p>
-                                    <hr>
-                                    <p>Or check the <a href="#" class="btn btn-danger ml15">FAQ</a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+                <form action="{{url('admin/user/index')}}" class="form-inline" id="doSearch">
+                    <input type="text" name="column" @if(isset($_GET['column'])) value="{{$_GET['column']}}" @endif placeholder="请输入查询的内容" class="form-control">
+                    <select name="select" class="form-control">
+                        <option value="0">用户名</option>
+                        <option value="1">手机号</option>
+                        <option value="2">email</option>
+                    </select>
+                    <button type="submit" class="btn btn-sm btn-primary">搜索</button>
+                </form>
+                <!-- Start .table -->
+                    <table class="table table-striped" id="usertable">
+                        <tr>
+                            <th>用户名</th>
+                            <th>联系方式</th>
+                            <th>email</th>
+                            <th>创建时间</th>
+                            <th>操作栏</th>
+                        </tr>
+                        @foreach($userInfo as $user)
+                        <tr>
+                            <th>
+                                @if(isset($_GET['column']))
+                                {!!str_replace($_GET['column'],'<font color="red">'.$_GET['column'].'</font>',mb_substr($user->username,0,15))!!}
+                                @else
+                                {{mb_substr($user->username,0,15)}}
+                                @endif
+                                @if(mb_strlen($user->username) > 15)...@endif
+                            </th>
+                            <th>
+                                @if(isset($_GET['column']))
+                                {!!str_replace($_GET['column'],'<font color="red">'.$_GET['column'].'</font>',mb_substr($user->phone,0,15))!!}
+                                @else
+                                {{mb_substr($user->phone,0,15)}}
+                                @endif
+                                @if(mb_strlen($user->phone) > 15)...@endif
+                            </th>
+                            <th>
+                                @if(isset($_GET['column']))
+                                {!!str_replace($_GET['column'],'<font color="red">'.$_GET['column'].'</font>',mb_substr($user->email,0,15))!!}
+                                @else
+                                {{mb_substr($user->email,0,15)}}
+                                @endif
+                                @if(mb_strlen($user->email) > 15)...@endif
+                            </th>
+                            <th>{{$user->created_at}}</th>
+                            <th>
+                                <a href="{{url('admin/user/edit',['id' => $user->id])}}" class="btn btn-sm btn-primary">编辑</a>
+                                <a href="{{url('admin/user/del',['id' => $user->id])}}" class="btn btn-sm btn-info" id="del_{{$user->id}}">删除</a>
+                            </th>
+                        </tr>
+                        @endforeach
+                    </table>
+                    <div id="page">
+                        {{$userInfo->appends($_GET)->links()}}
                     </div>
-                </div>
-                <!-- End .option-buttons -->
+                    <div>
+                        <span>总: {{$count}} 条</span>
+                    </div>
+                <!-- End .table -->
             </div>
             <!-- End .page-header -->
         </div>
@@ -128,4 +104,7 @@
 </div>
 @endsection
 @section("js")
+$('[id^=del_]').click(function(){
+    return confirm('是否真的删除呢?');
+});
 @endsection

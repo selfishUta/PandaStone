@@ -66,5 +66,5 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 	Route::get('user/index', "UserController@index");
 
 	// 后台管理用户模块--员工分类列表
-	Route::get('user/staff', "UserController@staff");
+	Route::get('user/edit', "UserController@edit");
 });

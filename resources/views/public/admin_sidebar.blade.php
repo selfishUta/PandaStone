@@ -34,17 +34,13 @@
                 <ul class="nav sub">
                     <li><a href="{{url('admin/user/index')}}"><i class="ec-pencil2"></i> 普通用户分类列表 </a>
                     </li>
-                    <li><a href="{{url('admin/user/staff')}}"><i class="ec-pencil2"></i> 员工成员列表 </a>
-                    </li>
                 </ul>
             </li>
-            <li><a href="#"><i class="ec-mail"></i> Email app</a>
+            <li><a href="#"> 员工分类管理 <i class="im-paragraph-justify"></i></a>
                 <ul class="nav sub">
-                    <li><a href="email-inbox.html"><i class="ec-archive"></i> Inbox</a>
+                    <li><a href="{{url('admin/staff/index')}}"><i class="ec-pencil2"></i> 员工成员列表</a>
                     </li>
-                    <li><a href="email-read.html"><i class="br-eye"></i> Read email</a>
-                    </li>
-                    <li><a href="email-write.html"><i class="ec-pencil2"></i> Write email</a>
+                    <li><a href="{{url('admin/staff/add')}}"><i class="ec-pencil2"></i> 添加员工</a>
                     </li>
                 </ul>
             </li>

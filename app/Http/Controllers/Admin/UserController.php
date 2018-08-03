@@ -74,21 +74,59 @@ class UserController extends Controller {
 	}
 
 	/**
-	 * 功能:普通用户列表展示
+	 * 功能:普通用户列表展示(关键字查询等)
 	 */
-	public function index() {
-		$userInfo = User::where('status', 0)->get();
+	public function index(Request $request) {
 
-		return view('admin/user/index', ['userInfo' => $userInfo]);
+		$column = $request->get('column') ?? '';
+
+		$select = $request->get('select');
+
+		$cond = array();
+
+		switch ($select) {
+		case '0':
+			$cond['username'] = array('like', '%' . $column . '%');
+			break;
+		case '1':
+			$cond['phone'] = array('like', '%' . $column . '%');
+			break;
+		case '2':
+			$cond['email'] = array('like', '%' . $column . '%');
+			break;
+		default:
+			break;
+		}
+
+		$userInfo = User::where('status', '<', 9)
+			->where($cond)
+			->orderby('created_at', 'desc')
+			->paginate(1);
+
+		$count = User::where('status', '<', 9)
+			->where($cond)
+			->count();
+
+		return view('admin/user/index', ['userInfo' => $userInfo, 'count' => $count]);
 	}
 
 	/**
-	 * 功能:员工列表展示
+	 * 功能:编辑普通用户信息
 	 */
-	public function staff() {
-		$userInfo = User::where('status', 1)->get();
+	public function edit($id) {
+		$userInfo = User::where('id', $id)->first();
 
-		return view('admin/user/staff', ['userInfo' => $userInfo]);
+		return view('admin/user/edit', ['userInfo' => $userInfo]);
 	}
 
+	/**
+	 * 功能:删除普通用户信息
+	 */
+	public function del($id) {
+		$res = User::where('id', $id)->update(['status' => 9]);
+
+		$message = $res ? '删除成功' : '删除失败';
+
+		return redirect(url('admin/user/index'))->with('message', $message);
+	}
 }
