@@ -30,11 +30,11 @@
                     </li>
                 </ul>
             </li>
-            <li><a href="#"> 用户分类管理 <i class="st-lab"></i></a>
+            <li><a href="#"> 用户分类管理 <i class="im-paragraph-justify"></i></a>
                 <ul class="nav sub">
-                    <li><a href="{{url('admin/user/index')}}"><i class="fa-bell"></i> 普通用户分类列表 </a>
+                    <li><a href="{{url('admin/user/index')}}"><i class="ec-pencil2"></i> 普通用户分类列表 </a>
                     </li>
-                    <li><a href="{{url('admin/user/staff')}}"><i class="br-window"></i> 员工成员列表 </a>
+                    <li><a href="{{url('admin/user/staff')}}"><i class="ec-pencil2"></i> 员工成员列表 </a>
                     </li>
                 </ul>
             </li>

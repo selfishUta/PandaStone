@@ -10,6 +10,9 @@
                 <h1 class="page-header"><i class="im-table2"></i>普通用户分类列表</h1>
                 <!-- Start .bredcrumb -->
                 <ul id="crumb" class="breadcrumb">
+                    <li><i class="im-home"></i><a href="index.html">Home</a><i class="en-arrow-right7"></i></li>
+                    <li><i class="im-paragraph-justify"></i><a href="#">用户分类管理</a><i class="en-arrow-right7"></i></li>
+                    <li><i class="im-checkbox-checked"></i> 普通用户分类列表</li>
                 </ul>
                 <!-- End .breadcrumb -->
                 <!-- Start .option-buttons -->
