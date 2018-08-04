@@ -31,6 +31,7 @@
         <link href="{{asset('admin')}}/css/main.css" rel="stylesheet" />
         <!-- Custom stylesheets ( Put your own changes here ) -->
         <link href="{{asset('admin')}}/css/custom.css" rel="stylesheet" />
+        <link href="{{asset('admin')}}/css/jquery-ui.css" rel="stylesheet" />
         <!-- Fav and touch icons -->
         <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{asset('admin')}}/img/ico/apple-touch-icon-144-precomposed.png">
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{asset('admin')}}/img/ico/apple-touch-icon-114-precomposed.png">

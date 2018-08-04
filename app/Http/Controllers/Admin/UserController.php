@@ -63,17 +63,6 @@ class UserController extends Controller {
 	}
 
 	/**
-	 * 功能: 请求:get|post   显示添加页面,添加用户
-	 */
-	public function add(Request $request) {
-		if ($request->isMethod('get')) {
-			return view('admin/user/add');
-		} elseif ($request->isMethod('post')) {
-
-		}
-	}
-
-	/**
 	 * 功能:普通用户列表展示(关键字查询等)
 	 */
 	public function index(Request $request) {
@@ -86,13 +75,13 @@ class UserController extends Controller {
 
 		switch ($select) {
 		case '0':
-			$cond['username'] = array('like', '%' . $column . '%');
+			$cond[] = array('username', 'like', '%' . $column . '%');
 			break;
 		case '1':
-			$cond['phone'] = array('like', '%' . $column . '%');
+			$cond[] = array('phone', 'like', '%' . $column . '%');
 			break;
 		case '2':
-			$cond['email'] = array('like', '%' . $column . '%');
+			$cond[] = array('email', 'like', '%' . $column . '%');
 			break;
 		default:
 			break;
@@ -108,15 +97,6 @@ class UserController extends Controller {
 			->count();
 
 		return view('admin/user/index', ['userInfo' => $userInfo, 'count' => $count]);
-	}
-
-	/**
-	 * 功能:编辑普通用户信息
-	 */
-	public function edit($id) {
-		$userInfo = User::where('id', $id)->first();
-
-		return view('admin/user/edit', ['userInfo' => $userInfo]);
 	}
 
 	/**

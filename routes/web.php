@@ -84,10 +84,31 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 	Route::get("productCategory/delete", "ProductCategoryController@delete");
 
 	//======================================================================
+	// 后台管理用户模块--普通用户分类列表
+	Route::get('user/index', "UserController@index");
 
-	// 后台管理用户模块--员工分类列表
-	Route::get('user/staff', "UserController@staff");
+	// 后台管理用户模块--删除用户操作
+	Route::get('user/del/{id}', "UserController@del")->where(['id' => '[1-9]\d*']);
 
-	//=================================================================
+	//======================================================================
+	// 后台员工管理模块--员工分类列表
+	Route::get('staff/index', "StaffController@index");
+
+	// 后台员工管理模块--编辑员工信息
+	Route::get('staff/edit/{id}', "StaffController@edit")->where(['id' => '[1-9]\d*']);
+
+	// 后台员工管理模块--编辑操作
+	Route::post('staff/doEdit', "StaffController@doEdit");
+
+	// 后台员工管理模块--添加员工信息
+	Route::get('staff/add', "StaffController@add");
+
+	// 后台员工管理模块--添加操作
+	Route::post('staff/doAdd', "StaffController@doAdd");
+
+	// 后台员工管理模块--离职操作
+	Route::get('staff/del/{id}', "StaffController@del")->where(['id' => '[1-9]\d*']);
+
+	//======================================================================
 
 });
