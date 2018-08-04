@@ -141,7 +141,7 @@
     @if(isset($message))
     <span><font color="red">$message</font></span>
     @endif
-    <form action="doAdd" method="post" enctype="multipart/form-data" class="form-horizontal">
+    <form action="{{url('admin/product/save')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
         {{csrf_field()}}
     <!-- start 名称 -->
     <div class="form-group">
@@ -172,11 +172,10 @@
     <!-- start 产品分类 -->
     <div class="form-group">
       <div class="col-md-2">
-        <label class="control-label">:</label>
+        <label class="control-label">产品分类:</label>
       </div>
       <div class="col-md-5">
         <select name="product_id" class="form-control">
-            <option value="0">顶级分类</option>
             @foreach($prodCates as $cate)
             <option value="{{$cate['id']}}">{{$cate['name']}}</option>
             @endforeach
@@ -188,16 +187,56 @@
     </div>
     <!-- end 父级分类 -->
     <!-- start 添加产品图片 -->
-
+    <div class="form-group">
+      <div class="col-md-2">
+        <label class="control-label">产品图片:</label>
+      </div>
+      <div class="col-md-5">
+        <input id="imgupload" class="fileupload" type="file" multiple="" name="img[]">
+      </div>
+      <div class="col-md-5">
+        <span class="help-block">请选择图片</span>
+      </div>
+    </div>
     <!-- end 添加产品图片 -->
     <!-- start 单价 -->
-
+    <div class="form-group">
+      <div class="col-md-2">
+        <label class="control-label">产品单价:</label>
+      </div>
+      <div class="col-md-5">
+        <input class="form-control" type="text" name="price">
+      </div>
+      <div class="col-md-5">
+        <span class="help-block">请填写产品产品单价</span>
+      </div>
+    </div>
     <!-- end 单价 -->
     <!-- start 进价-->
-
+    <div class="form-group">
+      <div class="col-md-2">
+        <label class="control-label">产品进价:</label>
+      </div>
+      <div class="col-md-5">
+        <input class="form-control" type="text" name="cost">
+      </div>
+      <div class="col-md-5">
+        <span class="help-block">请填写产品进价</span>
+      </div>
+    </div>
     <!-- end 进价-->
     <!-- start 虚拟数量 -->
-
+    <div class="form-group">
+      <div class="col-md-2">
+        <label class="control-label">虚拟数量:</label>
+      </div>
+      <div class="col-md-5">
+        <input class="form-control" type="text" name="visual_num">
+      </div>
+      <div class="col-md-5">
+        <span class="help-block">请填写虚拟数量</span>
+      </div>
+    </div>
     <!-- end 虚拟数量-->
     <!-- start 添加、取消按钮 -->
     <div class="form-group">
@@ -234,4 +273,12 @@
 <script src="{{asset('admin')}}/js/jquery.sprFlat.js"></script>
 <script src="{{asset('admin')}}/js/app.js"></script>
 <script src="{{asset('admin')}}/js/pages/forms.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        var a = document.getElementById("imgupload");
+        var b = a.nextSibling.children[1].children[1];
+        console.log(b);
+        b.innerText = "上传图片";
+    })
+</script>
 @endsection

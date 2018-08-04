@@ -21,6 +21,8 @@
                     </li>
                     <li><a href="{{url('admin/productCategory/add')}}"><i class="im-checkbox-checked"></i>添加商品分类</a>
                     </li>
+                   <li><a href="{{url('admin/product/create')}}"><i class="im-checkbox-checked"></i>添加商品</a>
+                    </li>
                 </ul>
             </li>
             <li>

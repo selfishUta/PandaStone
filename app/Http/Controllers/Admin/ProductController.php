@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Admin\BaseController;
+use App\ProductCategory;
+use Illuminate\Http\Request;
 
 class ProductController extends BaseController
 {
@@ -36,7 +38,8 @@ class ProductController extends BaseController
      */
     public function create()
     {
-        return view("amdin.product.product.create");
+        $prodCates = ProductCategory::getAllCatesByid();
+        return view("admin.product.product.create", ['prodCates' => $prodCates]);
     }
 
     /**
@@ -47,6 +50,7 @@ class ProductController extends BaseController
     public function save(Request $request)
     {
         $data = $request->all();
+        unset($data['_token']);
         dd($data);
     }
 
