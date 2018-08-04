@@ -81,17 +81,16 @@
                             </th>
                             <th>{{$user->created_at}}</th>
                             <th>
-                                <a href="{{url('admin/user/edit',['id' => $user->id])}}" class="btn btn-sm btn-primary">编辑</a>
                                 <a href="{{url('admin/user/del',['id' => $user->id])}}" class="btn btn-sm btn-info" id="del_{{$user->id}}">删除</a>
                             </th>
                         </tr>
                         @endforeach
                     </table>
-                    <div id="page">
-                        {{$userInfo->appends($_GET)->links()}}
-                    </div>
                     <div>
                         <span>总: {{$count}} 条</span>
+                    </div>
+                    <div id="page">
+                        {{$userInfo->appends($_GET)->links()}}
                     </div>
                 <!-- End .table -->
             </div>
@@ -104,10 +103,12 @@
 </div>
 @endsection
 @section("js")
+<script type="text/javascript">
+    $('[id^=del_]').click(function(){
+        return confirm('是否真的删除呢?');
+    });
+</script>
 
-$('[id^=del_]').click(function(){
-    return confirm('是否真的删除呢?');
-});
 
 <script src="{{asset('admin')}}/plugins/core/moment/moment.min.js"></script>
 <script src="{{asset('admin')}}/plugins/charts/sparklines/jquery.sparkline.js"></script>
